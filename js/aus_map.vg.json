@@ -17,10 +17,23 @@
   },
   "transform": [
     {
-      "lookup": "properties.STATE_NAME",
+      "calculate": "datum.properties.STATE_NAME",
+      "as": "state_name"
+    },
+    {
+      "lookup": "state_name",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/state_temp_anomaly.csv"
+          "values": [
+            {"state_name": "New South Wales", "anomaly": 1.19},
+            {"state_name": "Victoria", "anomaly": 1.21},
+            {"state_name": "Queensland", "anomaly": 1.05},
+            {"state_name": "South Australia", "anomaly": 1.32},
+            {"state_name": "Western Australia", "anomaly": 1.13},
+            {"state_name": "Tasmania", "anomaly": 0.95},
+            {"state_name": "Northern Territory", "anomaly": 1.04},
+            {"state_name": "Australian Capital Territory", "anomaly": 1.28}
+          ]
         },
         "key": "state_name",
         "fields": ["anomaly"]
@@ -30,24 +43,20 @@
   "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1.5},
   "encoding": {
     "color": {
-      "condition": {
-        "test": "datum.anomaly !== null",
-        "field": "anomaly",
-        "type": "quantitative",
-        "scale": {
-          "scheme": "orangered",
-          "domain": [0.9, 1.4]
-        }
+      "field": "anomaly",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "orangered",
+        "domain": [0.9, 1.4]
       },
-      "value": "#dddddd"
+      "legend": {
+        "title": "Anomaly (°C)",
+        "gradientLength": 200
+      }
     },
     "tooltip": [
-      {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
+      {"field": "state_name", "type": "nominal", "title": "State"},
       {"field": "anomaly", "type": "quantitative", "title": "Anomaly (°C)", "format": ".2f"}
     ]
-  },
-  "legend": {
-    "title": "Anomaly (°C)",
-    "gradientLength": 200
   }
 }
