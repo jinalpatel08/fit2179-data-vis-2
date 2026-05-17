@@ -1,53 +1,120 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
-  "height": 350,
+  "height": 380,
   "title": {
-    "text": "Australia's mean annual temperature anomaly, 1910–2020",
-    "subtitle": "Departure from the 1961–1990 average (°C). Source: Bureau of Meteorology.",
-    "fontSize": 15,
+    "text": "Australia's Annual Temperature Anomaly, 1910–2020",
+    "subtitle": "Each bar shows departure from the 1961–1990 average. Black lines show decade averages. Hover for details.",
+    "fontSize": 16,
     "subtitleFontSize": 12,
-    "subtitleColor": "#888"
+    "subtitleColor": "#888",
+    "anchor": "start"
   },
   "data": {
     "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/temperature_anomaly.csv"
   },
+  "transform": [
+    {
+      "calculate": "floor(datum.Year / 10) * 10",
+      "as": "Decade"
+    }
+  ],
   "layer": [
     {
-      "mark": {"type": "rule", "color": "#cccccc", "strokeWidth": 1},
+      "mark": {"type": "rule", "color": "#bbbbbb", "strokeWidth": 1},
       "encoding": {
         "y": {"datum": 0}
       }
     },
     {
-      "mark": {"type": "bar", "width": 3},
+      "params": [
+        {
+          "name": "hover",
+          "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
+        }
+      ],
+      "mark": {"type": "bar", "width": 5, "cornerRadiusEnd": 2},
       "encoding": {
         "x": {
           "field": "Year",
           "type": "ordinal",
-          "axis": {"title": null, "labelAngle": -45}
+          "axis": {
+            "title": null,
+            "labelAngle": -45,
+            "labelOverlap": true,
+            "values": [1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020]
+          }
         },
         "y": {
           "field": "Temperature",
           "type": "quantitative",
-          "axis": {"title": "Temperature anomaly (°C)"}
+          "axis": {"title": "Temperature anomaly (°C)", "grid": false},
+          "scale": {"domain": [-1.5, 1.8]}
         },
         "color": {
           "condition": {"test": "datum.Temperature > 0", "value": "#d73027"},
           "value": "#4575b4"
         },
+        "opacity": {
+          "condition": {"param": "hover", "value": 1},
+          "value": 0.75
+        },
         "tooltip": [
           {"field": "Year", "type": "ordinal", "title": "Year"},
-          {"field": "Temperature", "type": "quantitative", "title": "Anomaly (°C)", "format": ".2f"}
+          {"field": "Temperature", "type": "quantitative", "title": "Anomaly (°C)", "format": ".2f"},
+          {"field": "Decade", "type": "ordinal", "title": "Decade"}
         ]
       }
     },
     {
-      "transform": [{"filter": "datum['11-year mean'] !== 'NaN'"}],
-      "mark": {"type": "line", "color": "#333333", "strokeWidth": 2.5},
+      "mark": {
+        "type": "tick",
+        "color": "#111111",
+        "thickness": 2,
+        "width": 28
+      },
+      "transform": [
+        {
+          "aggregate": [{"op": "mean", "field": "Temperature", "as": "DecadeAvg"}],
+          "groupby": ["Decade"]
+        },
+        {
+          "calculate": "datum.Decade + 5",
+          "as": "DecadeMid"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "DecadeMid",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "DecadeAvg",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "Decade", "type": "ordinal", "title": "Decade"},
+          {"field": "DecadeAvg", "type": "quantitative", "title": "Decade avg (°C)", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "dy": -8,
+        "fontSize": 11,
+        "color": "#d73027",
+        "fontWeight": "bold"
+      },
+      "transform": [
+        {"filter": "datum.Year == 2019"}
+      ],
       "encoding": {
         "x": {"field": "Year", "type": "ordinal"},
-        "y": {"field": "11-year mean", "type": "quantitative"}
+        "y": {"field": "Temperature", "type": "quantitative"},
+        "text": {"value": "Hottest year on record (2019)"}
       }
     }
   ]
