@@ -10,11 +10,11 @@
     "subtitleColor": "#888",
     "anchor": "start"
   },
-  "projection": {
+    "projection": {
     "type": "mercator",
-    "center": [134, -28],
-    "scale": 700
-  },
+    "center": [132, -27],
+    "scale": 550
+    },
   "data": {
     "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.min.geojson",
     "format": {"type": "json", "property": "features"}
