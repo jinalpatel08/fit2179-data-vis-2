@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 350,
+  "title": {
+    "text": "Australia's mean annual temperature anomaly, 1910–2020",
+    "subtitle": "Departure from the 1961–1990 average (°C). Source: Bureau of Meteorology.",
+    "fontSize": 15,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/temperature_anomaly.csv"
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#cccccc", "strokeWidth": 1},
+      "encoding": {
+        "y": {"datum": 0}
+      }
+    },
+    {
+      "mark": {"type": "bar", "width": 3},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal", "axis": {"title": null, "labelAngle": -45}},
+        "y": {"field": "Temperature", "type": "quantitative", "axis": {"title": "Temperature anomaly (°C)"}},
+        "color": {
+          "condition": {"test": "datum.Temperature > 0", "value": "#d73027"},
+          "value": "#4575b4"
+        },
+        "tooltip": [
+          {"field": "Year", "type": "ordinal", "title": "Year"},
+          {"field": "Temperature", "type": "quantitative", "title": "Anomaly (°C)", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum['11-year mean'] !== 'NaN'"}],
+      "mark": {"type": "line", "color": "#333333", "strokeWidth": 2.5},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "11-year mean", "type": "quantitative"}
+      }
+    }
+  ]
+}
