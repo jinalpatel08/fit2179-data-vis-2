@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 450,
+  "title": {
+    "text": "Temperature Anomaly Across Australian States",
+    "subtitle": "Average annual temperature anomaly (°C) above the 1961–1990 baseline, most recent decade. Source: Bureau of Meteorology.",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.min.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/state_temp_anomaly.csv"
+            },
+            "key": "state_name",
+            "fields": ["anomaly"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1.5},
+      "encoding": {
+        "color": {
+          "field": "anomaly",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "orangered",
+            "domain": [0.9, 1.4]
+          },
+          "legend": {
+            "title": "Anomaly (°C)",
+            "gradientLength": 200
+          }
+        },
+        "tooltip": [
+          {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
+          {"field": "anomaly", "type": "quantitative", "title": "Anomaly (°C)", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.min.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {"calculate": "datum.properties.STATE_NAME", "as": "state_name"},
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/state_temp_anomaly.csv"
+            },
+            "key": "state_name",
+            "fields": ["anomaly"]
+          }
+        }
+      ],
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "color": "#ffffff"},
+      "encoding": {
+        "longitude": {"field": "geometry.coordinates[0]", "type": "quantitative"},
+        "latitude": {"field": "geometry.coordinates[1]", "type": "quantitative"},
+        "text": {"field": "anomaly", "type": "quantitative", "format": ".2f"}
+      }
+    }
+  ]
+}
