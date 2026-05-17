@@ -22,8 +22,16 @@
     {
       "mark": {"type": "bar", "width": 3},
       "encoding": {
-        "x": {"field": "Year", "type": "ordinal", "axis": {"title": null, "labelAngle": -45}},
-        "y": {"field": "Temperature", "type": "quantitative", "axis": {"title": "Temperature anomaly (°C)"}},
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "axis": {"title": null, "labelAngle": -45}
+        },
+        "y": {
+          "field": "Temperature",
+          "type": "quantitative",
+          "axis": {"title": "Temperature anomaly (°C)"}
+        },
         "color": {
           "condition": {"test": "datum.Temperature > 0", "value": "#d73027"},
           "value": "#4575b4"
