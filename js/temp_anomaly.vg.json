@@ -4,7 +4,7 @@
   "height": 420,
   "title": {
     "text": "Australia's Warming Grid, 1910–2020",
-    "subtitle": "Each cell is one year. Colour shows temperature anomaly from the 1961–1990 average. Click a decade to highlight it.",
+    "subtitle": "Each cell is one year. Colour shows temperature anomaly from the 1961–1990 average. Click a cell to highlight its decade.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#888",
@@ -21,8 +21,7 @@
   "params": [
     {
       "name": "selectedDecade",
-      "select": {"type": "point", "fields": ["Decade"]},
-      "bind": "legend"
+      "select": {"type": "point", "fields": ["DecadeLabel"]}
     }
   ],
   "layer": [
@@ -47,8 +46,8 @@
           "legend": {"title": "Anomaly (°C)", "gradientLength": 200}
         },
         "opacity": {
-          "condition": {"param": "selectedDecade", "value": 1},
-          "value": 0.2
+          "condition": {"param": "selectedDecade", "empty": true, "value": 1},
+          "value": 0.15
         },
         "tooltip": [
           {"field": "Year", "type": "quantitative", "title": "Year", "format": "d"},
@@ -72,8 +71,8 @@
           "value": "#333333"
         },
         "opacity": {
-          "condition": {"param": "selectedDecade", "value": 1},
-          "value": 0.2
+          "condition": {"param": "selectedDecade", "empty": true, "value": 1},
+          "value": 0.15
         },
         "tooltip": [
           {"field": "Year", "type": "quantitative", "title": "Year", "format": "d"},
