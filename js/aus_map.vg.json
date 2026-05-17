@@ -11,51 +11,43 @@
     "anchor": "start"
   },
   "projection": {"type": "equirectangular"},
-  "layer": [
+  "data": {
+    "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.min.geojson",
+    "format": {"type": "json", "property": "features"}
+  },
+  "transform": [
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/aus_states.json",
-        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-      },
-      "mark": {"type": "geoshape", "fill": "#ddd", "stroke": "white", "strokeWidth": 0.5}
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/aus_states.json",
-        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-      },
-      "transform": [
-        {
-          "lookup": "properties.NAME",
-          "from": {
-            "data": {
-              "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/state_temp_anomaly.csv"
-            },
-            "key": "state_name",
-            "fields": ["anomaly"]
-          }
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/state_temp_anomaly.csv"
         },
-        {"filter": "datum.anomaly != null"}
-      ],
-      "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1.5},
-      "encoding": {
-        "color": {
-          "field": "anomaly",
-          "type": "quantitative",
-          "scale": {
-            "scheme": "orangered",
-            "domain": [0.9, 1.4]
-          },
-          "legend": {
-            "title": "Anomaly (°C)",
-            "gradientLength": 200
-          }
-        },
-        "tooltip": [
-          {"field": "properties.NAME", "type": "nominal", "title": "State"},
-          {"field": "anomaly", "type": "quantitative", "title": "Anomaly (°C)", "format": ".2f"}
-        ]
+        "key": "state_name",
+        "fields": ["anomaly"]
       }
     }
-  ]
+  ],
+  "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1.5},
+  "encoding": {
+    "color": {
+      "condition": {
+        "test": "datum.anomaly !== null",
+        "field": "anomaly",
+        "type": "quantitative",
+        "scale": {
+          "scheme": "orangered",
+          "domain": [0.9, 1.4]
+        }
+      },
+      "value": "#dddddd"
+    },
+    "tooltip": [
+      {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
+      {"field": "anomaly", "type": "quantitative", "title": "Anomaly (°C)", "format": ".2f"}
+    ]
+  },
+  "legend": {
+    "title": "Anomaly (°C)",
+    "gradientLength": 200
+  }
 }
