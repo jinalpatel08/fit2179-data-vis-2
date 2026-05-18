@@ -12,36 +12,29 @@
   },
   "data": {
     "values": [
-      {"state": "South Australia", "anomaly": 1.32, "deviation": 0.17},
-      {"state": "ACT", "anomaly": 1.28, "deviation": 0.13},
-      {"state": "Victoria", "anomaly": 1.21, "deviation": 0.06},
-      {"state": "New South Wales", "anomaly": 1.19, "deviation": 0.04},
-      {"state": "Western Australia", "anomaly": 1.13, "deviation": -0.02},
-      {"state": "Northern Territory", "anomaly": 1.04, "deviation": -0.11},
-      {"state": "Queensland", "anomaly": 1.05, "deviation": -0.10},
-      {"state": "Tasmania", "anomaly": 0.95, "deviation": -0.20}
+      {"state": "South Australia", "anomaly": 1.32, "deviation": 0.17, "category": "Above national average"},
+      {"state": "ACT", "anomaly": 1.28, "deviation": 0.13, "category": "Above national average"},
+      {"state": "Victoria", "anomaly": 1.21, "deviation": 0.06, "category": "Above national average"},
+      {"state": "New South Wales", "anomaly": 1.19, "deviation": 0.04, "category": "Above national average"},
+      {"state": "Western Australia", "anomaly": 1.13, "deviation": -0.02, "category": "Below national average"},
+      {"state": "Queensland", "anomaly": 1.05, "deviation": -0.10, "category": "Below national average"},
+      {"state": "Northern Territory", "anomaly": 1.04, "deviation": -0.11, "category": "Below national average"},
+      {"state": "Tasmania", "anomaly": 0.95, "deviation": -0.20, "category": "Below national average"}
     ]
   },
-  "transform": [
-    {
-      "calculate": "datum.deviation > 0 ? 'Above national average' : 'Below national average'",
-      "as": "category"
-    }
-  ],
   "layer": [
     {
-      "mark": {"type": "rule", "color": "#333333", "strokeDash": [4, 3], "strokeWidth": 1.5},
+      "mark": {
+        "type": "rule",
+        "color": "#333333",
+        "strokeDash": [4, 3],
+        "strokeWidth": 1.5
+      },
       "encoding": {
         "y": {"datum": 0}
       }
     },
     {
-      "params": [
-        {
-          "name": "hover",
-          "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
-        }
-      ],
       "mark": {"type": "bar", "cornerRadiusEnd": 3},
       "encoding": {
         "x": {
@@ -72,47 +65,11 @@
           },
           "legend": {"title": null}
         },
-        "opacity": {
-          "condition": {"param": "hover", "value": 1},
-          "value": 0.75
-        },
         "tooltip": [
           {"field": "state", "type": "nominal", "title": "State"},
           {"field": "anomaly", "type": "quantitative", "title": "Anomaly (°C)", "format": ".2f"},
           {"field": "deviation", "type": "quantitative", "title": "vs national avg (°C)", "format": "+.2f"}
         ]
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "fontSize": 11,
-        "fontWeight": "bold",
-        "dy": -8
-      },
-      "encoding": {
-        "x": {
-          "field": "state",
-          "type": "nominal",
-          "sort": null
-        },
-        "y": {
-          "field": "deviation",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "deviation",
-          "type": "quantitative",
-          "format": "+.2f"
-        },
-        "color": {
-          "field": "category",
-          "type": "nominal",
-          "scale": {
-            "domain": ["Above national average", "Below national average"],
-            "range": ["#d73027", "#4575b4"]
-          }
-        }
       }
     }
   ]
