@@ -12,21 +12,17 @@
   },
   "data": {
     "values": [
-      {"state": "New South Wales", "anomaly": 1.19, "national_avg": 1.15},
-      {"state": "Victoria", "anomaly": 1.21, "national_avg": 1.15},
-      {"state": "Queensland", "anomaly": 1.05, "national_avg": 1.15},
-      {"state": "South Australia", "anomaly": 1.32, "national_avg": 1.15},
-      {"state": "Western Australia", "anomaly": 1.13, "national_avg": 1.15},
-      {"state": "Tasmania", "anomaly": 0.95, "national_avg": 1.15},
-      {"state": "Northern Territory", "anomaly": 1.04, "national_avg": 1.15},
-      {"state": "ACT", "anomaly": 1.28, "national_avg": 1.15}
+      {"state": "South Australia", "anomaly": 1.32, "deviation": 0.17},
+      {"state": "ACT", "anomaly": 1.28, "deviation": 0.13},
+      {"state": "Victoria", "anomaly": 1.21, "deviation": 0.06},
+      {"state": "New South Wales", "anomaly": 1.19, "deviation": 0.04},
+      {"state": "Western Australia", "anomaly": 1.13, "deviation": -0.02},
+      {"state": "Northern Territory", "anomaly": 1.04, "deviation": -0.11},
+      {"state": "Queensland", "anomaly": 1.05, "deviation": -0.10},
+      {"state": "Tasmania", "anomaly": 0.95, "deviation": -0.20}
     ]
   },
   "transform": [
-    {
-      "calculate": "datum.anomaly - datum.national_avg",
-      "as": "deviation"
-    },
     {
       "calculate": "datum.deviation > 0 ? 'Above national average' : 'Below national average'",
       "as": "category"
@@ -51,7 +47,7 @@
         "x": {
           "field": "state",
           "type": "nominal",
-          "sort": "-y",
+          "sort": null,
           "axis": {
             "title": null,
             "labelAngle": -30,
@@ -98,7 +94,7 @@
         "x": {
           "field": "state",
           "type": "nominal",
-          "sort": "-y"
+          "sort": null
         },
         "y": {
           "field": "deviation",
