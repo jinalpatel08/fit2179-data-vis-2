@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
   "width": 700,
   "height": 450,
 
@@ -20,19 +19,17 @@
   "data": {
     "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/aus_states.json",
     "format": {
-      "type": "geojson"
+      "property": "features"
     }
   },
 
   "transform": [
     {
       "lookup": "properties.STATE_NAME",
-
       "from": {
         "data": {
           "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/state_temp_anomaly.csv"
         },
-
         "key": "state_name",
         "fields": ["anomaly"]
       }
@@ -49,12 +46,10 @@
     "color": {
       "field": "anomaly",
       "type": "quantitative",
-
       "scale": {
         "scheme": "orangered",
         "domain": [0.9, 1.4]
       },
-
       "legend": {
         "title": "Temperature anomaly (°C)"
       }
@@ -66,7 +61,6 @@
         "type": "nominal",
         "title": "State"
       },
-
       {
         "field": "anomaly",
         "type": "quantitative",
