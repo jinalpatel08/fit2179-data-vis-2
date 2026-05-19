@@ -32,6 +32,7 @@
         "x": {
           "field": "Year",
           "type": "quantitative",
+          "scale": {"domain": [1910, 2020]},
           "axis": {"title": null, "format": "d", "tickCount": 12}
         },
         "y": {
@@ -57,7 +58,7 @@
         "x": {
           "field": "Year",
           "type": "quantitative",
-          "scale": {"domain": [1909, 2021]}
+          "scale": {"domain": [1910, 2020]}
         },
         "y": {
           "field": "Temperature",
@@ -94,7 +95,7 @@
         "color": "#d73027"
       },
       "encoding": {
-        "x": {"field": "Year", "type": "quantitative"},
+        "x": {"field": "Year", "type": "quantitative", "scale": {"domain": [1910, 2020]}},
         "y": {"field": "Temperature", "type": "quantitative"},
         "text": {"value": "Hottest year (2019)"}
       }
@@ -111,7 +112,7 @@
         "color": "#4575b4"
       },
       "encoding": {
-        "x": {"field": "Year", "type": "quantitative"},
+        "x": {"field": "Year", "type": "quantitative", "scale": {"domain": [1910, 2020]}},
         "y": {"field": "Temperature", "type": "quantitative"},
         "text": {"value": "Coolest year (1917)"}
       }
