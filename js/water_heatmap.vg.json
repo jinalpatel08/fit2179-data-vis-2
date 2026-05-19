@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 420,
+  "title": {
+    "text": "Melbourne Reservoir Storage Levels, 1948–2026",
+    "subtitle": "Monthly storage as % of total capacity. The Millennium Drought (1997–2009) is clearly visible. Source: Melbourne Water.",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/melbourne_water.csv"
+  },
+  "mark": {"type": "rect"},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "axis": {
+        "title": "Year",
+        "labelAngle": -45,
+        "labelFontSize": 10,
+        "values": [1948,1955,1960,1965,1970,1975,1980,1985,1990,1995,2000,2005,2010,2015,2020,2025]
+      }
+    },
+    "y": {
+      "field": "month",
+      "type": "ordinal",
+      "sort": ["January","February","March","April","May","June","July","August","September","October","November","December"],
+      "axis": {"title": "Month", "labelFontSize": 11}
+    },
+    "color": {
+      "field": "storage",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "blues",
+        "domain": [0, 100]
+      },
+      "legend": {
+        "title": "Storage (%)",
+        "gradientLength": 200
+      }
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "month", "type": "nominal", "title": "Month"},
+      {"field": "storage", "type": "quantitative", "title": "Storage (%)", "format": ".1f"}
+    ]
+  }
+}
