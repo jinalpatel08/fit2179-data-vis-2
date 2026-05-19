@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Australia's Changing Climate</title>
-
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -16,38 +14,114 @@
   <header>
     <h1>Australia's Changing Climate</h1>
     <p class="subtitle">How rising temperatures, shifting rainfall, and worsening extremes are reshaping the continent — 1910 to today</p>
+    <div class="data-sources">
+      <span class="source-tag">Bureau of Meteorology</span>
+      <span class="source-tag">Melbourne Water</span>
+      <span class="source-tag">ABS</span>
+    </div>
   </header>
 
+  <nav>
+    <ul>
+      <li><a href="#section1">Temperature</a></li>
+      <li><a href="#section2">By State</a></li>
+      <li><a href="#section3">Rainfall</a></li>
+      <li><a href="#section4">Water Storage</a></li>
+    </ul>
+  </nav>
+
   <main>
+
     <section id="section1">
+      <p class="section-number">01 — Temperature</p>
       <h2>Australia is heating up</h2>
-      <p>Since 1910, Australia's average temperature has risen by approximately 1.5°C. The warming has accelerated since the 1950s, with the most recent decade being the hottest on record.</p>
-      <div id="temp_anomaly_chart"></div>
+      <p class="section-text">Since 1910, Australia's average temperature has risen by approximately 1.5°C. The warming has accelerated markedly since the 1950s, with the most recent decade being the hottest on record.</p>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-value">+1.5°C</div>
+          <div class="stat-label">Warming since 1910</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">2019</div>
+          <div class="stat-label">Hottest year on record</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value blue">1917</div>
+          <div class="stat-label">Coolest year on record</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">9 of 10</div>
+          <div class="stat-label">Hottest years since 2005</div>
+        </div>
+      </div>
+      <div class="chart-container">
+        <div id="temp_anomaly_chart"></div>
+      </div>
     </section>
 
     <section id="section2">
-    <h2>Where is it warming fastest?</h2>
-    <p>South Australia and Victoria have experienced the sharpest temperature rises, while Tasmania has warmed the least. Inland states consistently show higher anomalies than coastal regions.</p>
-    <div id="aus_map_chart"></div>
-    <div id="state_bar_chart"></div>
+      <p class="section-number">02 — By State</p>
+      <h2>Where is it warming fastest?</h2>
+      <p class="section-text">South Australia and the ACT have experienced the sharpest temperature rises, while Tasmania has warmed the least. Inland states consistently show higher anomalies than coastal regions.</p>
+      <div class="chart-container">
+        <div id="aus_map_chart"></div>
+      </div>
+      <div class="chart-container">
+        <div id="state_bar_chart"></div>
+      </div>
     </section>
 
     <section id="section3">
-    <h2>The rains are shifting — and shrinking</h2>
-    <p>Australia's rainfall is highly variable year to year, but the long-term trend shows increasing drought frequency. 2019 was the driest year since records began in 1900, with just 275mm — well below the long-term average of around 465mm.</p>
-    <div id="rainfall_chart"></div>
+      <p class="section-number">03 — Rainfall</p>
+      <h2>The rains are shifting — and shrinking</h2>
+      <p class="section-text">Australia's rainfall is highly variable year to year, but the long-term trend shows increasing drought frequency. 2019 was the driest year since records began in 1900, with just 275mm — well below the long-term average of around 465mm.</p>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-value blue">760mm</div>
+          <div class="stat-label">Wettest year — 1974</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">276mm</div>
+          <div class="stat-label">Driest year — 2019</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value blue">465mm</div>
+          <div class="stat-label">Long-term average</div>
+        </div>
+      </div>
+      <div class="chart-container">
+        <div id="rainfall_chart"></div>
+      </div>
     </section>
 
     <section id="section4">
-    <h2>Melbourne's reservoirs under pressure</h2>
-    <p>Melbourne's water storage has fluctuated dramatically since 1948. The Millennium Drought (1997–2009) drove storage to a critical low of just 25.9% in 2009 — triggering permanent water restrictions and the construction of the Wonthaggi desalination plant.</p>
-    <div id="water_heatmap"></div>
+      <p class="section-number">04 — Water Storage</p>
+      <h2>Melbourne's reservoirs under pressure</h2>
+      <p class="section-text">Melbourne's water storage has fluctuated dramatically since 1948. The Millennium Drought (1997–2009) drove storage to a critical low of just 25.9% in 2009 — triggering permanent water restrictions and the construction of the Wonthaggi desalination plant.</p>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-value">25.9%</div>
+          <div class="stat-label">Lowest storage — June 2009</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value blue">97.9%</div>
+          <div class="stat-label">Highest storage — Oct 2022</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">12 years</div>
+          <div class="stat-label">Duration of Millennium Drought</div>
+        </div>
+      </div>
+      <div class="chart-container">
+        <div id="water_heatmap"></div>
+      </div>
     </section>
 
   </main>
 
   <footer>
-    <p>Data: Bureau of Meteorology | Visualisation by Jinal Patel | 2026</p>
+    <p>Data sources: Bureau of Meteorology · Melbourne Water · Australian Bureau of Statistics</p>
+    <p>Visualisation by Jinal Patel · FIT2179 Data Visualisation · Monash University · 2026</p>
   </footer>
 
   <script src="js/vega_lite_vis.js"></script>

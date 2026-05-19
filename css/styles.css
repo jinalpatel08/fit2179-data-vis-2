@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,59 +7,203 @@
 }
 
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #222;
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f4f0;
+  color: #1a1a2e;
   font-size: 16px;
   line-height: 1.7;
 }
 
+/* ── HEADER ── */
 header {
-  background-color: #1a1a2e;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
   color: #ffffff;
-  padding: 50px 80px;
+  padding: 70px 80px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4575b4, #d73027);
 }
 
 header h1 {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  line-height: 1.2;
+  max-width: 700px;
 }
 
 header .subtitle {
   font-size: 1.1rem;
   color: #aac4e0;
-  max-width: 750px;
+  max-width: 650px;
+  font-weight: 300;
+  line-height: 1.6;
 }
 
+header .data-sources {
+  margin-top: 24px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+header .source-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(170, 196, 224, 0.4);
+  color: #aac4e0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── NAV ── */
+nav {
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 80px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 0;
+}
+
+nav ul li a {
+  display: block;
+  padding: 16px 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #666;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+nav ul li a:hover {
+  color: #1a1a2e;
+  border-bottom-color: #d73027;
+}
+
+/* ── MAIN ── */
 main {
-  max-width: 960px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 60px 40px;
+  padding: 0 40px 80px;
 }
 
+/* ── SECTIONS ── */
 section {
-  margin-bottom: 80px;
+  margin: 70px 0;
+  padding-bottom: 70px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+.section-number {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #d73027;
+  margin-bottom: 8px;
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   color: #1a1a2e;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
-p {
+.section-text {
   font-size: 1rem;
-  color: #444;
-  max-width: 750px;
-  margin-bottom: 24px;
+  color: #555;
+  max-width: 720px;
+  margin-bottom: 32px;
+  line-height: 1.8;
 }
 
-footer {
-  text-align: center;
+/* ── CHART CONTAINERS ── */
+.chart-container {
+  background: #ffffff;
+  border-radius: 12px;
   padding: 30px;
-  font-size: 0.85rem;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid #ebebeb;
+}
+
+/* ── STAT CARDS ── */
+.stat-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 160px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px 24px;
+  border: 1px solid #ebebeb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.stat-card .stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #d73027;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-card .stat-value.blue {
+  color: #4575b4;
+}
+
+.stat-card .stat-label {
+  font-size: 0.82rem;
   color: #888;
-  border-top: 1px solid #ddd;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #1a1a2e;
+  color: #aac4e0;
+  text-align: center;
+  padding: 30px 40px;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+footer a {
+  color: #aac4e0;
+  text-decoration: underline;
 }
