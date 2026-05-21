@@ -1,11 +1,4 @@
 year,month,month_num,storage
-1948,January,01,84.51
-1948,February,02,87.34
-1948,March,03,90.58
-1948,April,04,94.17
-1948,May,05,97.2
-1948,June,06,96.64
-1948,July,07,90.54
 1949,January,01,82.37
 1949,February,02,71.63
 1949,March,03,73.82
@@ -930,8 +923,3 @@ year,month,month_num,storage
 2025,October,10,73.44
 2025,November,11,75.11
 2025,December,12,74.9
-2026,January,01,72.27
-2026,February,02,69.62
-2026,March,03,67.58
-2026,April,04,65.36
-2026,May,05,64.44
