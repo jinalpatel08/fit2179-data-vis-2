@@ -1,10 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 700,
-  "height": 420,
   "title": {
     "text": "Melbourne Reservoir Storage Levels, 1948–2026",
-    "subtitle": "Monthly storage as % of total capacity. The Millennium Drought (1997–2009) is clearly visible. Source: Melbourne Water.",
+    "subtitle": "Click any cell to see the monthly breakdown for that year.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#888",
@@ -13,40 +11,119 @@
   "data": {
     "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/melbourne_water.csv"
   },
-  "mark": {"type": "rect"},
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "ordinal",
-      "axis": {
-        "title": "Year",
-        "labelAngle": -45,
-        "labelFontSize": 10,
-        "values": [1948,1955,1960,1965,1970,1975,1980,1985,1990,1995,2000,2005,2010,2015,2020,2025]
+  "vconcat": [
+    {
+      "width": 700,
+      "height": 380,
+      "params": [
+        {
+          "name": "year_select",
+          "select": {"type": "point", "fields": ["year"]}
+        }
+      ],
+      "mark": {"type": "rect"},
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "axis": {
+            "title": "Year",
+            "labelAngle": -45,
+            "labelFontSize": 10,
+            "values": [1948,1955,1960,1965,1970,1975,1980,1985,1990,1995,2000,2005,2010,2015,2020,2025]
+          }
+        },
+        "y": {
+          "field": "month",
+          "type": "ordinal",
+          "sort": ["January","February","March","April","May","June","July","August","September","October","November","December"],
+          "axis": {"title": null, "labelFontSize": 11}
+        },
+        "color": {
+          "field": "storage",
+          "type": "quantitative",
+          "scale": {"scheme": "blues", "domain": [0, 100]},
+          "legend": {"title": "Storage (%)", "gradientLength": 150}
+        },
+        "opacity": {
+          "condition": {"param": "year_select", "empty": true, "value": 1},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "year", "type": "ordinal", "title": "Year"},
+          {"field": "month", "type": "nominal", "title": "Month"},
+          {"field": "storage", "type": "quantitative", "title": "Storage (%)", "format": ".1f"}
+        ]
       }
     },
-    "y": {
-      "field": "month",
-      "type": "ordinal",
-      "sort": ["January","February","March","April","May","June","July","August","September","October","November","December"],
-      "axis": {"title": "Month", "labelFontSize": 11}
-    },
-    "color": {
-      "field": "storage",
-      "type": "quantitative",
-      "scale": {
-        "scheme": "blues",
-        "domain": [0, 100]
-      },
-      "legend": {
-        "title": "Storage (%)",
-        "gradientLength": 200
-      }
-    },
-    "tooltip": [
-      {"field": "year", "type": "ordinal", "title": "Year"},
-      {"field": "month", "type": "nominal", "title": "Month"},
-      {"field": "storage", "type": "quantitative", "title": "Storage (%)", "format": ".1f"}
-    ]
-  }
+    {
+      "width": 700,
+      "height": 200,
+      "transform": [
+        {"filter": {"param": "year_select"}}
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "area",
+            "line": {"color": "#2166ac", "strokeWidth": 2},
+            "color": "#c6dbef",
+            "opacity": 0.6
+          },
+          "encoding": {
+            "x": {
+              "field": "month_num",
+              "type": "ordinal",
+              "axis": {
+                "title": "Month",
+                "labelExpr": "{'01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'May','06':'Jun','07':'Jul','08':'Aug','09':'Sep','10':'Oct','11':'Nov','12':'Dec'}[datum.value]"
+              }
+            },
+            "y": {
+              "field": "storage",
+              "type": "quantitative",
+              "axis": {"title": "Storage (%)", "grid": false},
+              "scale": {"domain": [0, 100]}
+            },
+            "tooltip": [
+              {"field": "month", "type": "nominal", "title": "Month"},
+              {"field": "storage", "type": "quantitative", "title": "Storage (%)", "format": ".1f"},
+              {"field": "year", "type": "ordinal", "title": "Year"}
+            ]
+          }
+        },
+        {
+          "mark": {"type": "rule", "color": "#d73027", "strokeDash": [4,3], "strokeWidth": 1.5},
+          "transform": [
+            {"aggregate": [{"op": "mean", "field": "storage", "as": "avg_storage"}]}
+          ],
+          "encoding": {
+            "y": {"field": "avg_storage", "type": "quantitative"},
+            "tooltip": [
+              {"field": "avg_storage", "type": "quantitative", "title": "Year average (%)", "format": ".1f"}
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 5,
+            "dy": -8,
+            "fontSize": 12,
+            "fontWeight": "bold",
+            "color": "#1a1a2e"
+          },
+          "transform": [
+            {"aggregate": [{"op": "min", "field": "year", "as": "selected_year"}]}
+          ],
+          "encoding": {
+            "x": {"datum": "06"},
+            "y": {"datum": 95},
+            "text": {"field": "selected_year", "type": "quantitative", "format": "d"}
+          }
+        }
+      ]
+    }
+  ]
 }
