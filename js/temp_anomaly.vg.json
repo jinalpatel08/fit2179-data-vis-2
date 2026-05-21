@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
-  "height": 420,
+  "height": 380,
   "title": {
-    "text": "Australia's Warming Grid, 1910–2020",
-    "subtitle": "Each cell is one year. Colour shows temperature anomaly from the 1961–1990 average. Hover for details.",
+    "text": "Australia's Annual Temperature Anomaly, 1910–2020",
+    "subtitle": "Each dot shows how far that year's temperature was from the 1961–1990 average. Use the slider to explore.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#888",
@@ -14,57 +14,126 @@
     "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/temperature_anomaly.csv"
   },
   "transform": [
-    {"calculate": "floor(datum.Year / 10) * 10", "as": "Decade"},
-    {"calculate": "datum.Year % 10", "as": "YearWithinDecade"},
-    {"calculate": "datum.Decade + 's'", "as": "DecadeLabel"}
+    {
+      "calculate": "datum.Temperature > 0 ? 'Warmer than average' : 'Cooler than average'",
+      "as": "category"
+    }
+  ],
+  "params": [
+    {
+      "name": "year_filter",
+      "value": 1910,
+      "bind": {
+        "input": "range",
+        "min": 1910,
+        "max": 2020,
+        "step": 1,
+        "name": "Show years from: "
+      }
+    }
   ],
   "layer": [
     {
-      "mark": {"type": "rect", "stroke": "#ffffff", "strokeWidth": 2, "cornerRadius": 4},
+      "mark": {"type": "rule", "color": "#cccccc", "strokeWidth": 1},
+      "encoding": {
+        "y": {"datum": 0}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.Year >= year_filter"}
+      ],
+      "mark": {"type": "rule", "strokeWidth": 1},
       "encoding": {
         "x": {
-          "field": "YearWithinDecade",
-          "type": "ordinal",
-          "axis": {"title": "Year within decade", "labelFontSize": 11}
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {"domain": [1910, 2020]},
+          "axis": {"title": null, "format": "d", "tickCount": 12}
         },
         "y": {
-          "field": "DecadeLabel",
-          "type": "ordinal",
-          "sort": ["1910s","1920s","1930s","1940s","1950s","1960s","1970s","1980s","1990s","2000s","2010s"],
-          "axis": {"title": "Decade", "labelFontSize": 12}
-        },
-        "color": {
           "field": "Temperature",
           "type": "quantitative",
-          "scale": {"scheme": "redblue", "reverse": true, "domain": [-1.5, 1.5]},
-          "legend": {"title": "Anomaly (°C)", "gradientLength": 200}
+          "axis": {"title": "Temperature anomaly (°C)", "grid": false}
+        },
+        "y2": {"datum": 0},
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Warmer than average", "Cooler than average"],
+            "range": ["#d73027", "#4575b4"]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.Year >= year_filter"}
+      ],
+      "mark": {"type": "point", "filled": true, "size": 60},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {"domain": [1910, 2020]}
+        },
+        "y": {
+          "field": "Temperature",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Warmer than average", "Cooler than average"],
+            "range": ["#d73027", "#4575b4"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top-left"
+          }
         },
         "tooltip": [
           {"field": "Year", "type": "quantitative", "title": "Year", "format": "d"},
           {"field": "Temperature", "type": "quantitative", "title": "Anomaly (°C)", "format": "+.2f"},
-          {"field": "DecadeLabel", "type": "nominal", "title": "Decade"}
+          {"field": "category", "type": "nominal", "title": "Category"}
         ]
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold"},
+      "transform": [{"filter": "datum.Year == 2019"}],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -6,
+        "dy": -12,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#d73027"
+      },
       "encoding": {
-        "x": {"field": "YearWithinDecade", "type": "ordinal"},
-        "y": {
-          "field": "DecadeLabel",
-          "type": "ordinal",
-          "sort": ["1910s","1920s","1930s","1940s","1950s","1960s","1970s","1980s","1990s","2000s","2010s"]
-        },
-        "text": {"field": "Year", "type": "quantitative", "format": "d"},
-        "color": {
-          "condition": {"test": "abs(datum.Temperature) > 0.7", "value": "#ffffff"},
-          "value": "#333333"
-        },
-        "tooltip": [
-          {"field": "Year", "type": "quantitative", "title": "Year", "format": "d"},
-          {"field": "Temperature", "type": "quantitative", "title": "Anomaly (°C)", "format": "+.2f"},
-          {"field": "DecadeLabel", "type": "nominal", "title": "Decade"}
-        ]
+        "x": {"field": "Year", "type": "quantitative", "scale": {"domain": [1910, 2020]}},
+        "y": {"field": "Temperature", "type": "quantitative"},
+        "text": {"value": "Hottest year (2019)"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.Year == 1917"}],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "dy": 12,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#4575b4"
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "quantitative", "scale": {"domain": [1910, 2020]}},
+        "y": {"field": "Temperature", "type": "quantitative"},
+        "text": {"value": "Coolest year (1917)"}
       }
     }
   ]
