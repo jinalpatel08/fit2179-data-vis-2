@@ -118,8 +118,6 @@
           "mark": {
             "type": "text",
             "align": "left",
-            "dx": 5,
-            "dy": -8,
             "fontSize": 14,
             "fontWeight": "bold",
             "color": "#1a1a2e"
@@ -127,7 +125,15 @@
           "encoding": {
             "x": {"datum": "06"},
             "y": {"datum": 95},
-            "text": {"field": "selected_year", "type": "quantitative", "format": "d"}
+            "text": {
+              "condition": {
+                "test": "year_select_tuple !== null",
+                "field": "selected_year",
+                "type": "quantitative",
+                "format": "d"
+              },
+              "value": "Click a year above to explore monthly storage"
+            }
           }
         }
       ]
