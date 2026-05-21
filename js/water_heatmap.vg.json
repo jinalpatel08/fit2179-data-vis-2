@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Melbourne Reservoir Storage Levels, 1948–2026",
-    "subtitle": "Click any cell to see the monthly breakdown for that year.",
+    "text": "Melbourne Reservoir Storage Levels, 1949–2025",
+    "subtitle": "Click any year column to see the monthly storage breakdown for that year.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#888",
@@ -30,7 +30,7 @@
             "title": "Year",
             "labelAngle": -45,
             "labelFontSize": 10,
-            "values": [1948,1955,1960,1965,1970,1975,1980,1985,1990,1995,2000,2005,2010,2015,2020,2025]
+            "values": [1949,1955,1960,1965,1970,1975,1980,1985,1990,1995,2000,2005,2010,2015,2020,2025]
           }
         },
         "y": {
@@ -58,10 +58,9 @@
     },
     {
       "width": 700,
-      "height": 200,
+      "height": 220,
       "transform": [
-        {"filter": {"param": "year_select"}},
-        {"filter": "datum.storage != null"},
+        {"filter": {"param": "year_select", "empty": false}},
         {"filter": "datum.storage > 0"}
       ],
       "layer": [
@@ -117,23 +116,15 @@
           ],
           "mark": {
             "type": "text",
-            "align": "left",
-            "fontSize": 14,
+            "align": "center",
+            "fontSize": 13,
             "fontWeight": "bold",
             "color": "#1a1a2e"
           },
           "encoding": {
             "x": {"datum": "06"},
             "y": {"datum": 95},
-            "text": {
-              "condition": {
-                "test": "year_select_tuple !== null",
-                "field": "selected_year",
-                "type": "quantitative",
-                "format": "d"
-              },
-              "value": "Click a year above to explore monthly storage"
-            }
+            "text": {"field": "selected_year", "type": "ordinal"}
           }
         }
       ]
