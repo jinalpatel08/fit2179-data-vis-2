@@ -60,7 +60,9 @@
       "width": 700,
       "height": 200,
       "transform": [
-        {"filter": {"param": "year_select"}}
+        {"filter": {"param": "year_select"}},
+        {"filter": "datum.storage != null"},
+        {"filter": "datum.storage > 0"}
       ],
       "layer": [
         {
@@ -93,10 +95,15 @@
           }
         },
         {
-          "mark": {"type": "rule", "color": "#d73027", "strokeDash": [4,3], "strokeWidth": 1.5},
           "transform": [
             {"aggregate": [{"op": "mean", "field": "storage", "as": "avg_storage"}]}
           ],
+          "mark": {
+            "type": "rule",
+            "color": "#d73027",
+            "strokeDash": [4, 3],
+            "strokeWidth": 1.5
+          },
           "encoding": {
             "y": {"field": "avg_storage", "type": "quantitative"},
             "tooltip": [
@@ -105,18 +112,18 @@
           }
         },
         {
+          "transform": [
+            {"aggregate": [{"op": "min", "field": "year", "as": "selected_year"}]}
+          ],
           "mark": {
             "type": "text",
             "align": "left",
             "dx": 5,
             "dy": -8,
-            "fontSize": 12,
+            "fontSize": 14,
             "fontWeight": "bold",
             "color": "#1a1a2e"
           },
-          "transform": [
-            {"aggregate": [{"op": "min", "field": "year", "as": "selected_year"}]}
-          ],
           "encoding": {
             "x": {"datum": "06"},
             "y": {"datum": 95},
