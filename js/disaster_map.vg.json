@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 500,
+  "title": {
+    "text": "Where Do Extreme Weather Events Strike Most?",
+    "subtitle": "Each circle represents a state. Size shows total recorded extreme weather events 2000–2025. Source: EM-DAT.",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {"sphere": true},
+      "mark": {"type": "geoshape", "fill": "#1a2a3a"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/aus_states.json",
+        "format": {"property": "features"}
+      },
+      "mark": {"type": "geoshape", "fill": "#2d3a4a", "stroke": "#4a5a6a", "strokeWidth": 0.8}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/disaster_map.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.85,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "size": {
+          "field": "total_events",
+          "type": "quantitative",
+          "scale": {"range": [200, 4000]},
+          "legend": {"title": "Total events", "orient": "bottom-right"}
+        },
+        "color": {
+          "field": "total_events",
+          "type": "quantitative",
+          "scale": {"scheme": "orangered", "domain": [0, 70]},
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "total_events", "type": "quantitative", "title": "Total events"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/disaster_map.csv"
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#ffffff",
+        "dy": -18
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "state", "type": "nominal"}
+      }
+    }
+  ]
+}
