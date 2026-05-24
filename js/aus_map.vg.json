@@ -1,72 +1,84 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
-  "height": 450,
-
+  "height": 500,
   "title": {
     "text": "Where is Australia warming fastest?",
-    "subtitle": "Average temperature anomaly across Australian states and territories.",
+    "subtitle": "Average temperature anomaly (°C) above the 1961–1990 baseline, most recent decade. Source: Bureau of Meteorology.",
     "fontSize": 16,
     "subtitleFontSize": 12,
-    "subtitleColor": "#777",
+    "subtitleColor": "#888",
     "anchor": "start"
   },
-
-  "projection": {
-    "type": "mercator"
-  },
-
-  "data": {
-    "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/aus_states.json",
-    "format": {
-      "property": "features"
-    }
-  },
-
-  "transform": [
+  "projection": {"type": "mercator"},
+  "layer": [
     {
-      "lookup": "properties.STATE_NAME",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/state_temp_anomaly.csv"
-        },
-        "key": "state_name",
-        "fields": ["anomaly"]
-      }
-    }
-  ],
-
-  "mark": {
-    "type": "geoshape",
-    "stroke": "white",
-    "strokeWidth": 1.2
-  },
-
-  "encoding": {
-    "color": {
-      "field": "anomaly",
-      "type": "quantitative",
-      "scale": {
-        "scheme": "orangered",
-        "domain": [0.9, 1.4]
+      "data": {"sphere": true},
+      "mark": {"type": "geoshape", "fill": "#1a2a3a"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/aus_states.json",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
       },
-      "legend": {
-        "title": "Temperature anomaly (°C)"
+      "mark": {"type": "geoshape", "fill": "#2a3a4a", "stroke": "#3a4a5a", "strokeWidth": 0.5}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/aus_states.json",
+        "format": {"property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/state_temp_anomaly.csv"
+            },
+            "key": "state_name",
+            "fields": ["anomaly"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1.2},
+      "encoding": {
+        "color": {
+          "field": "anomaly",
+          "type": "quantitative",
+          "scale": {"scheme": "orangered", "domain": [0.9, 1.4]},
+          "legend": {"title": "Temperature anomaly (°C)"}
+        },
+        "tooltip": [
+          {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
+          {"field": "anomaly", "type": "quantitative", "title": "Anomaly (°C)", "format": ".2f"}
+        ]
       }
     },
-
-    "tooltip": [
-      {
-        "field": "properties.STATE_NAME",
-        "type": "nominal",
-        "title": "State"
+    {
+      "data": {
+        "values": [
+          {"state": "WA", "longitude": 121.5, "latitude": -27.0},
+          {"state": "NT", "longitude": 133.5, "latitude": -19.5},
+          {"state": "SA", "longitude": 135.5, "latitude": -30.0},
+          {"state": "QLD", "longitude": 144.5, "latitude": -22.0},
+          {"state": "NSW", "longitude": 146.5, "latitude": -32.5},
+          {"state": "VIC", "longitude": 144.5, "latitude": -37.0},
+          {"state": "TAS", "longitude": 146.5, "latitude": -42.0},
+          {"state": "ACT", "longitude": 149.2, "latitude": -35.5}
+        ]
       },
-      {
-        "field": "anomaly",
-        "type": "quantitative",
-        "title": "Anomaly (°C)",
-        "format": ".2f"
+      "mark": {
+        "type": "text",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#ffffff",
+        "opacity": 0.9
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "state", "type": "nominal"}
       }
-    ]
-  }
+    }
+  ]
 }
