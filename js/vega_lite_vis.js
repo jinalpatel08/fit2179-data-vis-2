@@ -3,6 +3,7 @@ var ausMapChart = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-v
 var rainfallChart = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/rainfall.vg.json";
 var stateBarChart = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/state_bar.vg.json";
 var waterHeatmap = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/water_heatmap.vg.json";
+var disastersBar = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/disasters_bar.vg.json";
 
 vegaEmbed("#temp_anomaly_chart", tempAnomalyChart)
   .then(function(result) {})
@@ -23,5 +24,9 @@ vegaEmbed("#state_bar_chart", stateBarChart)
 
 
 vegaEmbed("#water_heatmap", waterHeatmap)
+  .then(function(result) {})
+  .catch(console.error);
+
+vegaEmbed("#disasters_bar", disastersBar)
   .then(function(result) {})
   .catch(console.error);
