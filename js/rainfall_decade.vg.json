@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
+  "width": 560,
   "height": 300,
   "title": {
     "text": "Drought Frequency by Decade, 1900–2020",
@@ -20,7 +20,7 @@
       "field": "decade",
       "type": "ordinal",
       "sort": ["1900s","1910s","1920s","1930s","1940s","1950s","1960s","1970s","1980s","1990s","2000s","2010s","2020s"],
-      "axis": {"title": null, "labelFontSize": 11}
+      "axis": {"title": null, "labelFontSize": 11, "labelAngle": -45}
     },
     "y": {
       "field": "count",

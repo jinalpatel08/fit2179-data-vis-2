@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 620,
+  "width": 560,
   "height": 300,
   "title": {
     "text": "The Long-Term Rainfall Trend is Declining",
@@ -16,8 +16,7 @@
   },
   "layer": [
     {
-      "transform": [{"filter": "datum.rainfall != null"}],
-      "mark": {"type": "bar", "color": "#d6eaf8", "opacity": 0.5},
+      "mark": {"type": "bar", "color": "#d6eaf8", "opacity": 0.6},
       "encoding": {
         "x": {
           "field": "year",
@@ -33,7 +32,7 @@
       }
     },
     {
-      "transform": [{"filter": "datum.rolling_avg != null"}],
+      "transform": [{"filter": "datum.rolling_avg !== null && datum.rolling_avg > 0"}],
       "mark": {"type": "line", "color": "#2471a3", "strokeWidth": 3, "interpolate": "monotone"},
       "encoding": {
         "x": {"field": "year", "type": "quantitative"},
@@ -43,23 +42,6 @@
           {"field": "rolling_avg", "type": "quantitative", "title": "10-yr avg (mm)", "format": ".0f"},
           {"field": "rainfall", "type": "quantitative", "title": "Annual (mm)", "format": ".0f"}
         ]
-      }
-    },
-    {
-      "transform": [
-        {"filter": "datum.rolling_avg != null"},
-        {"aggregate": [{"op": "mean", "field": "rolling_avg", "as": "grand_avg"}]}
-      ],
-      "mark": {"type": "rule", "color": "#c0392b", "strokeDash": [5,3], "strokeWidth": 1.5},
-      "encoding": {"y": {"field": "grand_avg", "type": "quantitative"}}
-    },
-    {
-      "transform": [{"filter": "datum.year == 1980 && datum.rolling_avg != null"}],
-      "mark": {"type": "text", "align": "left", "dx": 6, "dy": -10, "fontSize": 11, "color": "#2471a3", "fontWeight": "bold"},
-      "encoding": {
-        "x": {"field": "year", "type": "quantitative"},
-        "y": {"field": "rolling_avg", "type": "quantitative"},
-        "text": {"value": "10-year rolling average"}
       }
     }
   ]

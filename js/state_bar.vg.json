@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 620,
+  "width": 560,
   "height": 320,
   "title": {
     "text": "How Each State Compares to the National Average",
@@ -13,14 +13,14 @@
   },
   "data": {
     "values": [
-      {"state": "South Australia", "anomaly": 1.32, "deviation": 0.17, "category": "Above national average"},
+      {"state": "SA", "anomaly": 1.32, "deviation": 0.17, "category": "Above national average"},
       {"state": "ACT", "anomaly": 1.28, "deviation": 0.13, "category": "Above national average"},
-      {"state": "Victoria", "anomaly": 1.21, "deviation": 0.06, "category": "Above national average"},
-      {"state": "New South Wales", "anomaly": 1.19, "deviation": 0.04, "category": "Above national average"},
-      {"state": "Western Australia", "anomaly": 1.13, "deviation": -0.02, "category": "Below national average"},
-      {"state": "Queensland", "anomaly": 1.05, "deviation": -0.10, "category": "Below national average"},
-      {"state": "Northern Territory", "anomaly": 1.04, "deviation": -0.11, "category": "Below national average"},
-      {"state": "Tasmania", "anomaly": 0.95, "deviation": -0.20, "category": "Below national average"}
+      {"state": "VIC", "anomaly": 1.21, "deviation": 0.06, "category": "Above national average"},
+      {"state": "NSW", "anomaly": 1.19, "deviation": 0.04, "category": "Above national average"},
+      {"state": "WA", "anomaly": 1.13, "deviation": -0.02, "category": "Below national average"},
+      {"state": "QLD", "anomaly": 1.05, "deviation": -0.10, "category": "Below national average"},
+      {"state": "NT", "anomaly": 1.04, "deviation": -0.11, "category": "Below national average"},
+      {"state": "TAS", "anomaly": 0.95, "deviation": -0.20, "category": "Below national average"}
     ]
   },
   "layer": [
@@ -35,12 +35,12 @@
           "field": "state",
           "type": "nominal",
           "sort": null,
-          "axis": {"title": null, "labelAngle": -30, "labelFontSize": 11}
+          "axis": {"title": null, "labelAngle": 0, "labelFontSize": 12}
         },
         "y": {
           "field": "deviation",
           "type": "quantitative",
-          "axis": {"title": "Deviation from national average (°C)", "grid": false, "format": "+.2f", "labelFontSize": 11}
+          "axis": {"title": "Deviation from national avg (°C)", "grid": false, "format": "+.2f", "labelFontSize": 11}
         },
         "color": {
           "field": "category",
@@ -49,7 +49,7 @@
             "domain": ["Above national average", "Below national average"],
             "range": ["#c0392b", "#2471a3"]
           },
-          "legend": {"title": null, "orient": "top-right", "labelFontSize": 12}
+          "legend": {"title": null, "orient": "top-right", "labelFontSize": 11}
         },
         "tooltip": [
           {"field": "state", "type": "nominal", "title": "State"},

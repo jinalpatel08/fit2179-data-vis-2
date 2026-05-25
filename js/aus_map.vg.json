@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 680,
-  "height": 480,
+  "width": 620,
+  "height": 440,
   "title": {
     "text": "Where is Australia Warming Fastest?",
     "subtitle": "Average annual temperature anomaly (°C) above the 1961–1990 baseline, most recent decade. Source: Bureau of Meteorology.",
@@ -11,12 +11,13 @@
     "anchor": "start",
     "font": "Inter"
   },
-  "projection": {"type": "mercator"},
+  "projection": {
+    "type": "mercator",
+    "center": [133, -27],
+    "scale": 700,
+    "translate": [310, 220]
+  },
   "layer": [
-    {
-      "data": {"sphere": true},
-      "mark": {"type": "geoshape", "fill": "#1a2a3a"}
-    },
     {
       "data": {
         "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/aus_states.json",
