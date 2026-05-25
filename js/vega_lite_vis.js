@@ -1,37 +1,22 @@
-var tempAnomalyChart = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/temp_anomaly.vg.json";
-var ausMapChart = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/aus_map.vg.json";
-var rainfallChart = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/rainfall.vg.json";
-var stateBarChart = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/state_bar.vg.json";
-var waterHeatmap = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/water_heatmap.vg.json";
-var disastersBar = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/disasters_bar.vg.json";
-var disasterMap = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/disaster_map.vg.json";
+const BASE = "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/";
 
-vegaEmbed("#temp_anomaly_chart", tempAnomalyChart)
-  .then(function(result) {})
-  .catch(console.error);
+const charts = [
+  ["#temp_lollipop",    "temp_lollipop.vg.json"],
+  ["#temp_grid",        "temp_grid.vg.json"],
+  ["#aus_map",          "aus_map.vg.json"],
+  ["#state_bar",        "state_bar.vg.json"],
+  ["#rainfall_area",    "rainfall_area.vg.json"],
+  ["#rainfall_decade",  "rainfall_decade.vg.json"],
+  ["#water_heatmap",    "water_heatmap.vg.json"],
+  ["#disasters_bar",    "disasters_bar.vg.json"],
+  ["#disaster_map",     "disaster_map.vg.json"],
+  ["#scatter",          "scatter.vg.json"],
+  ["#strip_plot",       "strip_plot.vg.json"],
+  ["#rainfall_trend",   "rainfall_trend.vg.json"]
+];
 
-vegaEmbed("#aus_map_chart", ausMapChart)
-  .then(function(result) {})
-  .catch(console.error);
-
-
-vegaEmbed("#rainfall_chart", rainfallChart)
-  .then(function(result) {})
-  .catch(console.error);
-
-vegaEmbed("#state_bar_chart", stateBarChart)
-  .then(function(result) {})
-  .catch(console.error);
-
-
-vegaEmbed("#water_heatmap", waterHeatmap)
-  .then(function(result) {})
-  .catch(console.error);
-
-vegaEmbed("#disasters_bar", disastersBar)
-  .then(function(result) {})
-  .catch(console.error);
-
-vegaEmbed("#disaster_map", disasterMap)
-  .then(function(result) {})
-  .catch(console.error);
+charts.forEach(([id, file]) => {
+  vegaEmbed(id, BASE + file, {actions: true})
+    .then(() => {})
+    .catch(err => console.error(id, err));
+});

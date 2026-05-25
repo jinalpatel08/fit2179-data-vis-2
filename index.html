@@ -11,147 +11,258 @@
 </head>
 <body>
 
-  <header>
-    <h1>Australia's Changing Climate</h1>
-    <p class="subtitle">How rising temperatures, shifting rainfall, and worsening extremes are reshaping the continent — 1910 to today</p>
-    <div class="data-sources">
-      <span class="source-tag">Bureau of Meteorology</span>
-      <span class="source-tag">Melbourne Water</span>
-      <span class="source-tag">ABS</span>
-    </div>
-  </header>
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<header>
+  <p class="header-eyebrow">FIT2179 Data Visualisation · Monash University · 2026</p>
+  <h1>Australia's<br><span>Changing</span> Climate</h1>
+  <p class="subtitle">How rising temperatures, shifting rainfall, and worsening extreme weather events are reshaping the continent — from 1900 to today.</p>
+  <div class="source-tags">
+    <span class="source-tag">Bureau of Meteorology</span>
+    <span class="source-tag">Melbourne Water</span>
+    <span class="source-tag">EM-DAT Disaster Database</span>
+  </div>
+</header>
 
-  <nav>
-    <ul>
-      <li><a href="#section1">Temperature</a></li>
-      <li><a href="#section2">By State</a></li>
-      <li><a href="#section3">Rainfall</a></li>
-      <li><a href="#section4">Water Storage</a></li>
-      <li><a href="#section5">Extreme Events</a></li>
-    </ul>
-  </nav>
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav>
+  <ul>
+    <li><a href="#section1">01 Temperature</a></li>
+    <li><a href="#section2">02 By State</a></li>
+    <li><a href="#section3">03 Rainfall</a></li>
+    <li><a href="#section4">04 Water Storage</a></li>
+    <li><a href="#section5">05 Extreme Events</a></li>
+    <li><a href="#section6">06 The Big Picture</a></li>
+  </ul>
+</nav>
 
-  <main>
+<!-- ═══════════════════ MAIN ═══════════════════ -->
+<main>
 
-    <section id="section1">
-      <p class="section-number">01 — Temperature</p>
-      <h2>Australia is heating up</h2>
-      <p class="section-text">Since 1910, Australia's average temperature has risen by approximately 1.5°C. The warming has accelerated markedly since the 1950s, with the most recent decade being the hottest on record.</p>
-      <div class="stat-row">
-        <div class="stat-card">
-          <div class="stat-value">+1.5°C</div>
-          <div class="stat-label">Warming since 1910</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">2019</div>
-          <div class="stat-label">Hottest year on record</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value blue">1917</div>
-          <div class="stat-label">Coolest year on record</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">9 of 10</div>
-          <div class="stat-label">Hottest years since 2005</div>
-        </div>
-      </div>
-      <div class="chart-container">
-        <div id="temp_anomaly_chart"></div>
-      </div>
-    </section>
+  <!-- ── SECTION 1: TEMPERATURE ── -->
+  <section id="section1">
+    <p class="section-eyebrow">01 — Temperature</p>
+    <h2>Australia is heating up</h2>
+    <p class="section-intro">
+      Since 1910, Australia's average annual temperature has risen by approximately 1.5°C — a dramatic shift in just over a century. The warming has accelerated sharply since the 1970s, and the most recent decade (2010–2020) is the hottest on record. Nine of the ten warmest years have occurred since 2005.
+    </p>
 
-    <section id="section2">
-      <p class="section-number">02 — By State</p>
-      <h2>Where is it warming fastest?</h2>
-      <p class="section-text">South Australia and the ACT have experienced the sharpest temperature rises, while Tasmania has warmed the least. Inland states consistently show higher anomalies than coastal regions.</p>
-      <div class="chart-container">
-        <div id="aus_map_chart"></div>
-      </div>
-      <div class="chart-container">
-        <div id="state_bar_chart"></div>
-      </div>
-    </section>
-
-    <section id="section3">
-      <p class="section-number">03 — Rainfall</p>
-      <h2>The rains are shifting — and shrinking</h2>
-      <p class="section-text">Australia's rainfall is highly variable year to year, but the long-term trend shows increasing drought frequency. 2019 was the driest year since records began in 1900, with just 275mm — well below the long-term average of around 465mm.</p>
-      <div class="stat-row">
-        <div class="stat-card">
-          <div class="stat-value blue">760mm</div>
-          <div class="stat-label">Wettest year — 1974</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">276mm</div>
-          <div class="stat-label">Driest year — 2019</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value blue">465mm</div>
-          <div class="stat-label">Long-term average</div>
-        </div>
-      </div>
-      <div class="chart-container">
-        <div id="rainfall_chart"></div>
-      </div>
-    </section>
-
-    <section id="section4">
-      <p class="section-number">04 — Water Storage</p>
-      <h2>Melbourne's reservoirs under pressure</h2>
-      <p class="section-text">Melbourne's water storage has fluctuated dramatically since 1948. The Millennium Drought (1997–2009) drove storage to a critical low of just 25.9% in 2009 — triggering permanent water restrictions and the construction of the Wonthaggi desalination plant.</p>
-      <div class="stat-row">
-        <div class="stat-card">
-          <div class="stat-value">25.9%</div>
-          <div class="stat-label">Lowest storage — June 2009</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value blue">97.9%</div>
-          <div class="stat-label">Highest storage — Oct 2022</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">12 years</div>
-          <div class="stat-label">Duration of Millennium Drought</div>
-        </div>
-      </div>
-      <div class="chart-container">
-        <div id="water_heatmap"></div>
-      </div>
-    </section>
-
-    <section id="section5">
-    <p class="section-number">05 — Extreme Events</p>
-    <h2>Extreme weather is becoming more frequent</h2>
-    <p class="section-text">As Australia's climate changes, the frequency of extreme weather events — floods, storms, wildfires, droughts and heatwaves — has increased. The 2010s and 2020s have seen a sharp rise in recorded disasters compared to earlier decades. Click a disaster type in the legend to isolate it.</p>
     <div class="stat-row">
       <div class="stat-card">
-        <div class="stat-value">50</div>
+        <div class="stat-value">+1.5°C</div>
+        <div class="stat-label">Warming since 1910</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">2019</div>
+        <div class="stat-label">Hottest year on record</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value blue">1917</div>
+        <div class="stat-label">Coolest year on record</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">9 of 10</div>
+        <div class="stat-label">Hottest years since 2005</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>How to read this chart:</strong> Each stem-and-dot represents one year. Red dots are warmer than the 1961–1990 average; blue dots are cooler. Use the slider to reveal how the balance shifts from mostly blue to almost entirely red over time.
+    </div>
+
+    <div class="chart-card">
+      <div id="temp_lollipop"></div>
+    </div>
+
+    <div class="chart-card">
+      <div id="temp_grid"></div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 2: BY STATE ── -->
+  <section id="section2">
+    <p class="section-eyebrow">02 — By State</p>
+    <h2>Where is it warming fastest?</h2>
+    <p class="section-intro">
+      The warming is not uniform across Australia. South Australia has recorded the highest temperature anomaly of any state at +1.32°C above the baseline, followed closely by the ACT at +1.28°C. Tasmania, buffered by the Southern Ocean, has experienced the least warming at +0.95°C — though this is still a significant departure from historical norms.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-value">+1.32°C</div>
+        <div class="stat-label">South Australia — highest anomaly</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value blue">+0.95°C</div>
+        <div class="stat-label">Tasmania — lowest anomaly</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">+0.37°C</div>
+        <div class="stat-label">Difference between extremes</div>
+      </div>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-card">
+        <div id="aus_map"></div>
+      </div>
+      <div class="chart-card">
+        <div id="state_bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 3: RAINFALL ── -->
+  <section id="section3">
+    <p class="section-eyebrow">03 — Rainfall</p>
+    <h2>The rains are shifting — and shrinking</h2>
+    <p class="section-intro">
+      Australia's rainfall is highly variable from year to year, but the long-term trend is unmistakable: dry years are becoming more frequent, and the driest years are getting drier. 2019 recorded just 275mm — the lowest annual total since records began in 1900, and well below the long-term average of 461mm. The 10-year rolling average has trended downward since the late 1990s.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-value blue">761mm</div>
+        <div class="stat-label">Wettest year — 1974</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">275mm</div>
+        <div class="stat-label">Driest year — 2019</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value blue">461mm</div>
+        <div class="stat-label">Long-term average</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">486mm</div>
+        <div class="stat-label">Difference wettest vs driest</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Note:</strong> The dashed blue line marks the long-term average (461mm). Years falling below this line are effectively drought years for Australia as a whole.
+    </div>
+
+    <div class="chart-card">
+      <div id="rainfall_area"></div>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-card">
+        <div id="rainfall_decade"></div>
+      </div>
+      <div class="chart-card">
+        <div id="rainfall_trend"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 4: WATER STORAGE ── -->
+  <section id="section4">
+    <p class="section-eyebrow">04 — Water Storage</p>
+    <h2>Melbourne's reservoirs under pressure</h2>
+    <p class="section-intro">
+      Melbourne's water storage levels tell a vivid story of climate impact on urban infrastructure. The Millennium Drought (1997–2009) drove combined reservoir storage to a historic low of 25.9% in June 2009, forcing the construction of the Wonthaggi desalination plant — a $3.5 billion infrastructure response to climate-driven water scarcity. Click any year column in the heatmap to see the monthly storage pattern for that year.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-value">25.9%</div>
+        <div class="stat-label">Lowest storage — June 2009</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value blue">97.9%</div>
+        <div class="stat-label">Highest storage — Oct 2022</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">12 yrs</div>
+        <div class="stat-label">Duration of Millennium Drought</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value dark">$3.5B</div>
+        <div class="stat-label">Cost of desalination plant response</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>How to interact:</strong> Click any cell in the heatmap to highlight that year and see the monthly storage breakdown in the chart below. The red dashed line shows the year's average. Light columns represent the Millennium Drought period (1997–2009).
+    </div>
+
+    <div class="chart-card">
+      <div id="water_heatmap"></div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 5: EXTREME EVENTS ── -->
+  <section id="section5">
+    <p class="section-eyebrow">05 — Extreme Events</p>
+    <h2>Extreme weather is becoming more frequent</h2>
+    <p class="section-intro">
+      As Australia's climate warms, the frequency and intensity of extreme weather events has increased markedly. Floods remain the most common disaster type, but wildfires have surged since the 2010s — culminating in the catastrophic 2019–20 Black Summer bushfire season. The east coast (NSW and Queensland) bears the greatest burden, accounting for more than half of all recorded events since 2000.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-value blue">50</div>
         <div class="stat-label">Flood events since 2000</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">48</div>
+        <div class="stat-value blue">48</div>
         <div class="stat-label">Storm events since 2000</div>
       </div>
       <div class="stat-card">
         <div class="stat-value">26</div>
         <div class="stat-label">Wildfire events since 2000</div>
       </div>
+      <div class="stat-card">
+        <div class="stat-value">68</div>
+        <div class="stat-label">NSW events — most of any state</div>
+      </div>
     </div>
-    <div class="chart-container">
-      <div id="disasters_bar"></div>
 
-    <div class="chart-container">
-      <div id="disaster_map"></div>
+    <div class="callout">
+      <strong>How to interact:</strong> Click a disaster type in the legend of the bar chart to isolate it. Hover over circles on the map to see state totals.
     </div>
+
+    <div class="chart-card">
+      <div id="disasters_bar"></div>
+    </div>
+
+    <div class="chart-card">
+      <div id="disaster_map"></div>
     </div>
   </section>
 
-  </main>
+  <!-- ── SECTION 6: BIG PICTURE ── -->
+  <section id="section6">
+    <p class="section-eyebrow">06 — The Big Picture</p>
+    <h2>Hotter, drier, and more dangerous</h2>
+    <p class="section-intro">
+      Taken together, the data tells a clear and consistent story. As Australia's temperatures have risen, rainfall has declined and extreme events have multiplied. The scatter plot below directly links the two primary datasets — confirming that hotter years tend to be drier years. The strip plot shows the dramatic rightward shift in temperature distribution decade by decade, leaving little room for doubt about the direction of change.
+    </p>
 
-  <footer>
-    <p>Data sources: Bureau of Meteorology · Melbourne Water · Australian Bureau of Statistics</p>
-    <p>Visualisation by Jinal Patel · FIT2179 Data Visualisation · Monash University · 2026</p>
-  </footer>
+    <div class="callout">
+      <strong>Key finding:</strong> The regression line in the scatter plot shows a statistically meaningful negative relationship between temperature anomaly and annual rainfall — as temperatures rise, rainfall falls. Each dot is coloured by decade, revealing how recent decades (2000s and 2010s, shown in warm colours) cluster in the high-temperature, low-rainfall corner.
+    </div>
 
-  <script src="js/vega_lite_vis.js"></script>
+    <div class="chart-row">
+      <div class="chart-card">
+        <div id="scatter"></div>
+      </div>
+      <div class="chart-card">
+        <div id="strip_plot"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <p><strong>Data sources:</strong> Bureau of Meteorology (bom.gov.au) · Melbourne Water (melbournewater.com.au) · EM-DAT International Disaster Database (emdat.be)</p>
+  <p>Visualisation by <strong>Jinal Patel</strong> · FIT2179 Data Visualisation · Monash University · 2026</p>
+  <p>AI tools (Claude, Anthropic) were used to assist with code generation and are acknowledged per Monash University policy.</p>
+</footer>
+
+<script src="js/vega_lite_vis.js"></script>
 </body>
 </html>

@@ -1,0 +1,114 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 360,
+  "title": {
+    "text": "Australia's Annual Temperature Anomaly, 1910–2020",
+    "subtitle": "Each stem shows how far that year's temperature departed from the 1961–1990 average. Use the slider to filter years.",
+    "fontSize": 15,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888",
+    "anchor": "start",
+    "font": "Inter"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/temperature_anomaly.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.Temperature > 0 ? 'Warmer than average' : 'Cooler than average'",
+      "as": "category"
+    }
+  ],
+  "params": [
+    {
+      "name": "year_filter",
+      "value": 1910,
+      "bind": {
+        "input": "range",
+        "min": 1910,
+        "max": 2015,
+        "step": 5,
+        "name": "Show years from: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#dddddd", "strokeWidth": 1},
+      "encoding": {"y": {"datum": 0}}
+    },
+    {
+      "transform": [{"filter": "datum.Year >= year_filter"}],
+      "mark": {"type": "rule", "strokeWidth": 1.5},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {"domain": [1910, 2020]},
+          "axis": {"title": null, "format": "d", "tickCount": 12, "labelFontSize": 11}
+        },
+        "y": {
+          "field": "Temperature",
+          "type": "quantitative",
+          "axis": {"title": "Temperature anomaly (°C)", "grid": false, "labelFontSize": 11},
+          "scale": {"domain": [-1.4, 1.7]}
+        },
+        "y2": {"datum": 0},
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Warmer than average", "Cooler than average"],
+            "range": ["#c0392b", "#2471a3"]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "transform": [{"filter": "datum.Year >= year_filter"}],
+      "mark": {"type": "point", "filled": true, "size": 55},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "scale": {"domain": [1910, 2020]}
+        },
+        "y": {"field": "Temperature", "type": "quantitative"},
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Warmer than average", "Cooler than average"],
+            "range": ["#c0392b", "#2471a3"]
+          },
+          "legend": {"title": null, "orient": "top-left", "labelFontSize": 12}
+        },
+        "tooltip": [
+          {"field": "Year", "type": "quantitative", "title": "Year", "format": "d"},
+          {"field": "Temperature", "type": "quantitative", "title": "Anomaly (°C)", "format": "+.2f"},
+          {"field": "category", "type": "nominal", "title": "Category"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.Year == 2019"}],
+      "mark": {"type": "text", "align": "right", "dx": -6, "dy": -12, "fontSize": 11, "fontWeight": "bold", "color": "#c0392b"},
+      "encoding": {
+        "x": {"field": "Year", "type": "quantitative", "scale": {"domain": [1910, 2020]}},
+        "y": {"field": "Temperature", "type": "quantitative"},
+        "text": {"value": "Hottest year (2019)"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.Year == 1917"}],
+      "mark": {"type": "text", "align": "left", "dx": 6, "dy": 12, "fontSize": 11, "fontWeight": "bold", "color": "#2471a3"},
+      "encoding": {
+        "x": {"field": "Year", "type": "quantitative", "scale": {"domain": [1910, 2020]}},
+        "y": {"field": "Temperature", "type": "quantitative"},
+        "text": {"value": "Coolest year (1917)"}
+      }
+    }
+  ]
+}

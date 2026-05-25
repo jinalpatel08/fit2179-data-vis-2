@@ -1,14 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
-  "height": 380,
+  "height": 340,
   "title": {
     "text": "Australia's Extreme Weather Events, 2000–2025",
-    "subtitle": "Number of recorded natural disasters per year by type. Source: EM-DAT International Disaster Database.",
-    "fontSize": 16,
+    "subtitle": "Number of recorded natural disasters per year by type. Click a type in the legend to isolate it. Source: EM-DAT.",
+    "fontSize": 15,
     "subtitleFontSize": 12,
     "subtitleColor": "#888",
-    "anchor": "start"
+    "anchor": "start",
+    "font": "Inter"
   },
   "data": {
     "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/disasters.csv"
@@ -25,26 +26,22 @@
     "x": {
       "field": "year",
       "type": "ordinal",
-      "axis": {
-        "title": null,
-        "labelAngle": -45,
-        "labelFontSize": 11
-      }
+      "axis": {"title": null, "labelAngle": -45, "labelFontSize": 11}
     },
     "y": {
       "field": "count",
       "type": "quantitative",
       "aggregate": "sum",
-      "axis": {"title": "Number of events", "grid": false}
+      "axis": {"title": "Number of events", "grid": false, "labelFontSize": 11}
     },
     "color": {
       "field": "disaster_type",
       "type": "nominal",
       "scale": {
         "domain": ["Flood", "Storm", "Wildfire", "Drought", "Extreme temperature"],
-        "range": ["#4575b4", "#74add1", "#d73027", "#8c510a", "#f46d43"]
+        "range": ["#2471a3", "#74add1", "#c0392b", "#8c510a", "#e67e22"]
       },
-      "legend": {"title": "Disaster type", "orient": "top-right"}
+      "legend": {"title": "Disaster type", "orient": "top-right", "labelFontSize": 12}
     },
     "opacity": {
       "condition": {"param": "disaster_select", "value": 1},

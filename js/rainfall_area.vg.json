@@ -1,0 +1,85 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 320,
+  "title": {
+    "text": "Australia's Annual Rainfall, 1900–2025",
+    "subtitle": "Total annual rainfall in millimetres. The dashed line shows the long-term average of 461mm. Source: Bureau of Meteorology.",
+    "fontSize": 15,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888",
+    "anchor": "start",
+    "font": "Inter"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/rainfall.csv"
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#2471a3", "strokeDash": [6, 4], "strokeWidth": 1.5},
+      "transform": [
+        {"aggregate": [{"op": "mean", "field": "rainfall", "as": "mean_rainfall"}]}
+      ],
+      "encoding": {"y": {"field": "mean_rainfall", "type": "quantitative"}}
+    },
+    {
+      "mark": {
+        "type": "area",
+        "line": {"color": "#2471a3", "strokeWidth": 1.5},
+        "color": "#d6eaf8",
+        "opacity": 0.8
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "axis": {"title": null, "format": "d", "tickCount": 13, "labelFontSize": 11}
+        },
+        "y": {
+          "field": "rainfall",
+          "type": "quantitative",
+          "axis": {"title": "Annual rainfall (mm)", "grid": false, "labelFontSize": 11},
+          "scale": {"domain": [0, 820]}
+        },
+        "tooltip": [
+          {"field": "year", "type": "quantitative", "title": "Year", "format": "d"},
+          {"field": "rainfall", "type": "quantitative", "title": "Rainfall (mm)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.year == 2019"}],
+      "mark": {"type": "text", "align": "right", "dx": -6, "dy": -12, "fontSize": 11, "fontWeight": "bold", "color": "#c0392b"},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "rainfall", "type": "quantitative"},
+        "text": {"value": "Driest since 1900 (2019)"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.year == 2019"}],
+      "mark": {"type": "point", "color": "#c0392b", "size": 90, "filled": true},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "rainfall", "type": "quantitative"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.year == 1974"}],
+      "mark": {"type": "text", "align": "left", "dx": 6, "dy": -12, "fontSize": 11, "fontWeight": "bold", "color": "#2471a3"},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "rainfall", "type": "quantitative"},
+        "text": {"value": "Wettest year (1974)"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.year == 1974"}],
+      "mark": {"type": "point", "color": "#2471a3", "size": 90, "filled": true},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "rainfall", "type": "quantitative"}
+      }
+    }
+  ]
+}

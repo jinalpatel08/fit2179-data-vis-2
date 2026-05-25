@@ -2,11 +2,12 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Melbourne Reservoir Storage Levels, 1949–2025",
-    "subtitle": "Click any year column to see the monthly storage breakdown for that year.",
-    "fontSize": 16,
+    "subtitle": "Monthly storage as % of total capacity. Click any year column to see that year's monthly breakdown.",
+    "fontSize": 15,
     "subtitleFontSize": 12,
     "subtitleColor": "#888",
-    "anchor": "start"
+    "anchor": "start",
+    "font": "Inter"
   },
   "data": {
     "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/melbourne_water.csv"
@@ -14,7 +15,7 @@
   "vconcat": [
     {
       "width": 700,
-      "height": 380,
+      "height": 340,
       "params": [
         {
           "name": "year_select",
@@ -43,11 +44,11 @@
           "field": "storage",
           "type": "quantitative",
           "scale": {"scheme": "blues", "domain": [0, 100]},
-          "legend": {"title": "Storage (%)", "gradientLength": 150}
+          "legend": {"title": "Storage (%)", "gradientLength": 150, "labelFontSize": 11}
         },
         "opacity": {
           "condition": {"param": "year_select", "empty": true, "value": 1},
-          "value": 0.2
+          "value": 0.15
         },
         "tooltip": [
           {"field": "year", "type": "ordinal", "title": "Year"},
@@ -58,7 +59,7 @@
     },
     {
       "width": 700,
-      "height": 220,
+      "height": 200,
       "transform": [
         {"filter": {"param": "year_select", "empty": false}},
         {"filter": "datum.storage > 0"}
@@ -67,9 +68,9 @@
         {
           "mark": {
             "type": "area",
-            "line": {"color": "#2166ac", "strokeWidth": 2},
-            "color": "#c6dbef",
-            "opacity": 0.6
+            "line": {"color": "#2471a3", "strokeWidth": 2},
+            "color": "#d6eaf8",
+            "opacity": 0.7
           },
           "encoding": {
             "x": {
@@ -77,13 +78,14 @@
               "type": "ordinal",
               "axis": {
                 "title": "Month",
+                "labelFontSize": 11,
                 "labelExpr": "{'01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'May','06':'Jun','07':'Jul','08':'Aug','09':'Sep','10':'Oct','11':'Nov','12':'Dec'}[datum.value]"
               }
             },
             "y": {
               "field": "storage",
               "type": "quantitative",
-              "axis": {"title": "Storage (%)", "grid": false},
+              "axis": {"title": "Storage (%)", "grid": false, "labelFontSize": 11},
               "scale": {"domain": [0, 100]}
             },
             "tooltip": [
@@ -97,33 +99,20 @@
           "transform": [
             {"aggregate": [{"op": "mean", "field": "storage", "as": "avg_storage"}]}
           ],
-          "mark": {
-            "type": "rule",
-            "color": "#d73027",
-            "strokeDash": [4, 3],
-            "strokeWidth": 1.5
-          },
+          "mark": {"type": "rule", "color": "#c0392b", "strokeDash": [5, 3], "strokeWidth": 1.5},
           "encoding": {
             "y": {"field": "avg_storage", "type": "quantitative"},
-            "tooltip": [
-              {"field": "avg_storage", "type": "quantitative", "title": "Year average (%)", "format": ".1f"}
-            ]
+            "tooltip": [{"field": "avg_storage", "type": "quantitative", "title": "Year average (%)", "format": ".1f"}]
           }
         },
         {
           "transform": [
             {"aggregate": [{"op": "min", "field": "year", "as": "selected_year"}]}
           ],
-          "mark": {
-            "type": "text",
-            "align": "center",
-            "fontSize": 13,
-            "fontWeight": "bold",
-            "color": "#1a1a2e"
-          },
+          "mark": {"type": "text", "align": "center", "fontSize": 13, "fontWeight": "bold", "color": "#1a1a2e"},
           "encoding": {
             "x": {"datum": "06"},
-            "y": {"datum": 95},
+            "y": {"datum": 94},
             "text": {"field": "selected_year", "type": "ordinal"}
           }
         }
