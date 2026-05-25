@@ -1,47 +1,33 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 620,
-  "height": 440,
+  "width": 580,
+  "height": 420,
   "title": {
     "text": "Where is Australia Warming Fastest?",
     "subtitle": "Average annual temperature anomaly (°C) above the 1961–1990 baseline, most recent decade. Source: Bureau of Meteorology.",
-    "fontSize": 15,
-    "subtitleFontSize": 12,
-    "subtitleColor": "#888",
-    "anchor": "start",
-    "font": "Inter"
+    "fontSize": 15, "subtitleFontSize": 12, "subtitleColor": "#888", "anchor": "start"
   },
-  "projection": {
-    "type": "mercator",
-    "center": [133, -27],
-    "scale": 700,
-    "translate": [310, 220]
-  },
+  "projection": {"type": "equirectangular", "center": [133, -28], "scale": 800, "translate": [290, 210]},
   "layer": [
     {
       "data": {
         "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/js/aus_states.json",
         "format": {"property": "features"}
       },
-      "transform": [
-        {
-          "lookup": "properties.STATE_NAME",
-          "from": {
-            "data": {
-              "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/state_temp_anomaly.csv"
-            },
-            "key": "state_name",
-            "fields": ["anomaly"]
-          }
+      "transform": [{
+        "lookup": "properties.STATE_NAME",
+        "from": {
+          "data": {"url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/state_temp_anomaly.csv"},
+          "key": "state_name",
+          "fields": ["anomaly"]
         }
-      ],
+      }],
       "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1.2},
       "encoding": {
         "color": {
-          "field": "anomaly",
-          "type": "quantitative",
+          "field": "anomaly", "type": "quantitative",
           "scale": {"scheme": "orangered", "domain": [0.9, 1.4]},
-          "legend": {"title": "Anomaly (°C)", "gradientLength": 180, "labelFontSize": 11}
+          "legend": {"title": "Anomaly (°C)", "gradientLength": 150}
         },
         "tooltip": [
           {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
@@ -50,19 +36,17 @@
       }
     },
     {
-      "data": {
-        "values": [
-          {"state": "WA", "longitude": 121.5, "latitude": -27.0},
-          {"state": "NT", "longitude": 133.5, "latitude": -19.5},
-          {"state": "SA", "longitude": 135.5, "latitude": -30.0},
-          {"state": "QLD", "longitude": 144.5, "latitude": -22.0},
-          {"state": "NSW", "longitude": 146.5, "latitude": -32.5},
-          {"state": "VIC", "longitude": 144.5, "latitude": -37.0},
-          {"state": "TAS", "longitude": 146.5, "latitude": -42.5},
-          {"state": "ACT", "longitude": 149.2, "latitude": -35.5}
-        ]
-      },
-      "mark": {"type": "text", "fontSize": 13, "fontWeight": "bold", "color": "#ffffff", "opacity": 0.9},
+      "data": {"values": [
+        {"state": "WA", "longitude": 121.5, "latitude": -27.0},
+        {"state": "NT", "longitude": 133.5, "latitude": -19.5},
+        {"state": "SA", "longitude": 135.5, "latitude": -30.0},
+        {"state": "QLD", "longitude": 144.5, "latitude": -22.0},
+        {"state": "NSW", "longitude": 146.5, "latitude": -32.5},
+        {"state": "VIC", "longitude": 144.5, "latitude": -37.0},
+        {"state": "TAS", "longitude": 146.5, "latitude": -42.5},
+        {"state": "ACT", "longitude": 149.2, "latitude": -35.5}
+      ]},
+      "mark": {"type": "text", "fontSize": 12, "fontWeight": "bold", "color": "#ffffff"},
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
         "latitude": {"field": "latitude", "type": "quantitative"},

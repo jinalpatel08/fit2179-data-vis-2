@@ -1,46 +1,219 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 560,
-  "height": 300,
+  "width": 540,
+  "height": 280,
   "title": {
-    "text": "Drought Frequency by Decade, 1900–2020",
+    "text": "Drought Frequency by Decade, 1900\u20132020",
     "subtitle": "Number of years above and below the long-term average (461mm) per decade. Source: Bureau of Meteorology.",
     "fontSize": 15,
     "subtitleFontSize": 12,
     "subtitleColor": "#888",
-    "anchor": "start",
-    "font": "Inter"
+    "anchor": "start"
   },
   "data": {
-    "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/rainfall_decade.csv"
+    "values": [
+      {
+        "decade": "1900s",
+        "category": "Above average",
+        "count": 4
+      },
+      {
+        "decade": "1900s",
+        "category": "Below average",
+        "count": 6
+      },
+      {
+        "decade": "1910s",
+        "category": "Above average",
+        "count": 3
+      },
+      {
+        "decade": "1910s",
+        "category": "Below average",
+        "count": 7
+      },
+      {
+        "decade": "1920s",
+        "category": "Above average",
+        "count": 2
+      },
+      {
+        "decade": "1920s",
+        "category": "Below average",
+        "count": 8
+      },
+      {
+        "decade": "1930s",
+        "category": "Above average",
+        "count": 2
+      },
+      {
+        "decade": "1930s",
+        "category": "Below average",
+        "count": 8
+      },
+      {
+        "decade": "1940s",
+        "category": "Above average",
+        "count": 4
+      },
+      {
+        "decade": "1940s",
+        "category": "Below average",
+        "count": 6
+      },
+      {
+        "decade": "1950s",
+        "category": "Above average",
+        "count": 4
+      },
+      {
+        "decade": "1950s",
+        "category": "Below average",
+        "count": 6
+      },
+      {
+        "decade": "1960s",
+        "category": "Above average",
+        "count": 2
+      },
+      {
+        "decade": "1960s",
+        "category": "Below average",
+        "count": 8
+      },
+      {
+        "decade": "1970s",
+        "category": "Above average",
+        "count": 7
+      },
+      {
+        "decade": "1970s",
+        "category": "Below average",
+        "count": 3
+      },
+      {
+        "decade": "1980s",
+        "category": "Above average",
+        "count": 4
+      },
+      {
+        "decade": "1980s",
+        "category": "Below average",
+        "count": 6
+      },
+      {
+        "decade": "1990s",
+        "category": "Above average",
+        "count": 7
+      },
+      {
+        "decade": "1990s",
+        "category": "Below average",
+        "count": 3
+      },
+      {
+        "decade": "2000s",
+        "category": "Above average",
+        "count": 7
+      },
+      {
+        "decade": "2000s",
+        "category": "Below average",
+        "count": 3
+      },
+      {
+        "decade": "2010s",
+        "category": "Above average",
+        "count": 6
+      },
+      {
+        "decade": "2010s",
+        "category": "Below average",
+        "count": 4
+      },
+      {
+        "decade": "2020s",
+        "category": "Above average",
+        "count": 6
+      }
+    ]
   },
-  "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 3,
+    "cornerRadiusTopRight": 3
+  },
   "encoding": {
     "x": {
       "field": "decade",
       "type": "ordinal",
-      "sort": ["1900s","1910s","1920s","1930s","1940s","1950s","1960s","1970s","1980s","1990s","2000s","2010s","2020s"],
-      "axis": {"title": null, "labelFontSize": 11, "labelAngle": -45}
+      "sort": [
+        "1900s",
+        "1910s",
+        "1920s",
+        "1930s",
+        "1940s",
+        "1950s",
+        "1960s",
+        "1970s",
+        "1980s",
+        "1990s",
+        "2000s",
+        "2010s",
+        "2020s"
+      ],
+      "axis": {
+        "title": null,
+        "labelFontSize": 11,
+        "labelAngle": -45
+      }
     },
     "y": {
       "field": "count",
       "type": "quantitative",
       "stack": true,
-      "axis": {"title": "Number of years", "grid": false, "labelFontSize": 11}
+      "axis": {
+        "title": "Number of years",
+        "grid": false,
+        "labelFontSize": 11
+      }
     },
     "color": {
       "field": "category",
       "type": "nominal",
       "scale": {
-        "domain": ["Above average", "Below average"],
-        "range": ["#2471a3", "#c0392b"]
+        "domain": [
+          "Above average",
+          "Below average"
+        ],
+        "range": [
+          "#2471a3",
+          "#c0392b"
+        ]
       },
-      "legend": {"title": null, "orient": "top-right", "labelFontSize": 12}
+      "legend": {
+        "title": null,
+        "orient": "top-right",
+        "labelFontSize": 12
+      }
     },
     "tooltip": [
-      {"field": "decade", "type": "nominal", "title": "Decade"},
-      {"field": "category", "type": "nominal", "title": "Category"},
-      {"field": "count", "type": "quantitative", "title": "Years"}
+      {
+        "field": "decade",
+        "type": "nominal",
+        "title": "Decade"
+      },
+      {
+        "field": "category",
+        "type": "nominal",
+        "title": "Category"
+      },
+      {
+        "field": "count",
+        "type": "quantitative",
+        "title": "Years"
+      }
     ]
   }
 }

@@ -1,65 +1,817 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 620,
-  "height": 360,
+  "width": 560,
+  "height": 340,
   "title": {
     "text": "Hotter Years Bring Less Rain",
-    "subtitle": "Each dot is one year (1910–2020). As temperature anomaly rises, rainfall tends to fall. Hover to identify years.",
+    "subtitle": "Each dot is one year (1910\u20132020). The trend line shows the negative relationship between temperature and rainfall.",
     "fontSize": 15,
     "subtitleFontSize": 12,
     "subtitleColor": "#888",
-    "anchor": "start",
-    "font": "Inter"
+    "anchor": "start"
   },
   "data": {
-    "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/temp_rain_scatter.csv"
+    "values": [
+      {
+        "Year": 1910,
+        "Temperature": -0.5,
+        "rainfall": 535.56,
+        "decade": "1910s"
+      },
+      {
+        "Year": 1911,
+        "Temperature": -0.68,
+        "rainfall": 436.93,
+        "decade": "1910s"
+      },
+      {
+        "Year": 1912,
+        "Temperature": -0.2,
+        "rainfall": 384.8,
+        "decade": "1910s"
+      },
+      {
+        "Year": 1913,
+        "Temperature": -0.57,
+        "rainfall": 444.92,
+        "decade": "1910s"
+      },
+      {
+        "Year": 1914,
+        "Temperature": -0.31,
+        "rainfall": 425.02,
+        "decade": "1910s"
+      },
+      {
+        "Year": 1915,
+        "Temperature": -0.23,
+        "rainfall": 381.84,
+        "decade": "1910s"
+      },
+      {
+        "Year": 1916,
+        "Temperature": -0.31,
+        "rainfall": 530.59,
+        "decade": "1910s"
+      },
+      {
+        "Year": 1917,
+        "Temperature": -1.15,
+        "rainfall": 578.01,
+        "decade": "1910s"
+      },
+      {
+        "Year": 1918,
+        "Temperature": -0.39,
+        "rainfall": 430.84,
+        "decade": "1910s"
+      },
+      {
+        "Year": 1919,
+        "Temperature": -0.62,
+        "rainfall": 366.02,
+        "decade": "1910s"
+      },
+      {
+        "Year": 1920,
+        "Temperature": -0.28,
+        "rainfall": 514.56,
+        "decade": "1920s"
+      },
+      {
+        "Year": 1921,
+        "Temperature": -0.02,
+        "rainfall": 550.43,
+        "decade": "1920s"
+      },
+      {
+        "Year": 1922,
+        "Temperature": -0.38,
+        "rainfall": 416.21,
+        "decade": "1920s"
+      },
+      {
+        "Year": 1923,
+        "Temperature": -0.49,
+        "rainfall": 411.33,
+        "decade": "1920s"
+      },
+      {
+        "Year": 1924,
+        "Temperature": -0.35,
+        "rainfall": 409.28,
+        "decade": "1920s"
+      },
+      {
+        "Year": 1925,
+        "Temperature": -0.44,
+        "rainfall": 421.37,
+        "decade": "1920s"
+      },
+      {
+        "Year": 1926,
+        "Temperature": -0.45,
+        "rainfall": 413.71,
+        "decade": "1920s"
+      },
+      {
+        "Year": 1927,
+        "Temperature": -0.32,
+        "rainfall": 417.73,
+        "decade": "1920s"
+      },
+      {
+        "Year": 1928,
+        "Temperature": -0.4,
+        "rainfall": 360.39,
+        "decade": "1920s"
+      },
+      {
+        "Year": 1929,
+        "Temperature": -0.52,
+        "rainfall": 378.47,
+        "decade": "1920s"
+      },
+      {
+        "Year": 1930,
+        "Temperature": -0.07,
+        "rainfall": 490.94,
+        "decade": "1930s"
+      },
+      {
+        "Year": 1931,
+        "Temperature": -0.26,
+        "rainfall": 435.92,
+        "decade": "1930s"
+      },
+      {
+        "Year": 1932,
+        "Temperature": -0.54,
+        "rainfall": 386.14,
+        "decade": "1930s"
+      },
+      {
+        "Year": 1933,
+        "Temperature": -0.22,
+        "rainfall": 444.51,
+        "decade": "1930s"
+      },
+      {
+        "Year": 1934,
+        "Temperature": -0.16,
+        "rainfall": 438.58,
+        "decade": "1930s"
+      },
+      {
+        "Year": 1935,
+        "Temperature": -0.65,
+        "rainfall": 349.7,
+        "decade": "1930s"
+      },
+      {
+        "Year": 1936,
+        "Temperature": -0.38,
+        "rainfall": 404.48,
+        "decade": "1930s"
+      },
+      {
+        "Year": 1937,
+        "Temperature": -0.52,
+        "rainfall": 385.81,
+        "decade": "1930s"
+      },
+      {
+        "Year": 1938,
+        "Temperature": -0.4,
+        "rainfall": 363.7,
+        "decade": "1930s"
+      },
+      {
+        "Year": 1939,
+        "Temperature": -0.04,
+        "rainfall": 492.39,
+        "decade": "1930s"
+      },
+      {
+        "Year": 1940,
+        "Temperature": -0.31,
+        "rainfall": 395.42,
+        "decade": "1940s"
+      },
+      {
+        "Year": 1941,
+        "Temperature": -0.11,
+        "rainfall": 480.39,
+        "decade": "1940s"
+      },
+      {
+        "Year": 1942,
+        "Temperature": 0.0,
+        "rainfall": 530.8,
+        "decade": "1940s"
+      },
+      {
+        "Year": 1943,
+        "Temperature": -0.38,
+        "rainfall": 389.53,
+        "decade": "1940s"
+      },
+      {
+        "Year": 1944,
+        "Temperature": -0.48,
+        "rainfall": 380.56,
+        "decade": "1940s"
+      },
+      {
+        "Year": 1945,
+        "Temperature": -0.27,
+        "rainfall": 409.97,
+        "decade": "1940s"
+      },
+      {
+        "Year": 1946,
+        "Temperature": -0.44,
+        "rainfall": 407.11,
+        "decade": "1940s"
+      },
+      {
+        "Year": 1947,
+        "Temperature": -0.11,
+        "rainfall": 500.14,
+        "decade": "1940s"
+      },
+      {
+        "Year": 1948,
+        "Temperature": -0.46,
+        "rainfall": 385.48,
+        "decade": "1940s"
+      },
+      {
+        "Year": 1949,
+        "Temperature": -0.13,
+        "rainfall": 476.95,
+        "decade": "1940s"
+      },
+      {
+        "Year": 1950,
+        "Temperature": 0.12,
+        "rainfall": 627.49,
+        "decade": "1950s"
+      },
+      {
+        "Year": 1951,
+        "Temperature": -0.49,
+        "rainfall": 369.27,
+        "decade": "1950s"
+      },
+      {
+        "Year": 1952,
+        "Temperature": -0.44,
+        "rainfall": 384.01,
+        "decade": "1950s"
+      },
+      {
+        "Year": 1953,
+        "Temperature": -0.21,
+        "rainfall": 426.13,
+        "decade": "1950s"
+      },
+      {
+        "Year": 1954,
+        "Temperature": -0.15,
+        "rainfall": 460.55,
+        "decade": "1950s"
+      },
+      {
+        "Year": 1955,
+        "Temperature": 0.07,
+        "rainfall": 573.18,
+        "decade": "1950s"
+      },
+      {
+        "Year": 1956,
+        "Temperature": 0.16,
+        "rainfall": 601.3,
+        "decade": "1950s"
+      },
+      {
+        "Year": 1957,
+        "Temperature": -0.44,
+        "rainfall": 388.68,
+        "decade": "1950s"
+      },
+      {
+        "Year": 1958,
+        "Temperature": -0.28,
+        "rainfall": 418.56,
+        "decade": "1950s"
+      },
+      {
+        "Year": 1959,
+        "Temperature": -0.32,
+        "rainfall": 414.37,
+        "decade": "1950s"
+      },
+      {
+        "Year": 1960,
+        "Temperature": -0.15,
+        "rainfall": 458.4,
+        "decade": "1960s"
+      },
+      {
+        "Year": 1961,
+        "Temperature": -0.66,
+        "rainfall": 336.14,
+        "decade": "1960s"
+      },
+      {
+        "Year": 1962,
+        "Temperature": -0.26,
+        "rainfall": 436.42,
+        "decade": "1960s"
+      },
+      {
+        "Year": 1963,
+        "Temperature": -0.11,
+        "rainfall": 475.58,
+        "decade": "1960s"
+      },
+      {
+        "Year": 1964,
+        "Temperature": -0.26,
+        "rainfall": 425.99,
+        "decade": "1960s"
+      },
+      {
+        "Year": 1965,
+        "Temperature": -0.47,
+        "rainfall": 345.72,
+        "decade": "1960s"
+      },
+      {
+        "Year": 1966,
+        "Temperature": -0.39,
+        "rainfall": 397.56,
+        "decade": "1960s"
+      },
+      {
+        "Year": 1967,
+        "Temperature": -0.25,
+        "rainfall": 428.88,
+        "decade": "1960s"
+      },
+      {
+        "Year": 1968,
+        "Temperature": -0.1,
+        "rainfall": 544.54,
+        "decade": "1960s"
+      },
+      {
+        "Year": 1969,
+        "Temperature": -0.32,
+        "rainfall": 410.8,
+        "decade": "1960s"
+      },
+      {
+        "Year": 1970,
+        "Temperature": -0.45,
+        "rainfall": 380.41,
+        "decade": "1970s"
+      },
+      {
+        "Year": 1971,
+        "Temperature": -0.22,
+        "rainfall": 486.33,
+        "decade": "1970s"
+      },
+      {
+        "Year": 1972,
+        "Temperature": -0.58,
+        "rainfall": 362.26,
+        "decade": "1970s"
+      },
+      {
+        "Year": 1973,
+        "Temperature": -0.07,
+        "rainfall": 641.11,
+        "decade": "1970s"
+      },
+      {
+        "Year": 1974,
+        "Temperature": -0.37,
+        "rainfall": 760.57,
+        "decade": "1970s"
+      },
+      {
+        "Year": 1975,
+        "Temperature": -0.07,
+        "rainfall": 593.78,
+        "decade": "1970s"
+      },
+      {
+        "Year": 1976,
+        "Temperature": -0.03,
+        "rainfall": 522.95,
+        "decade": "1970s"
+      },
+      {
+        "Year": 1977,
+        "Temperature": 0.05,
+        "rainfall": 469.86,
+        "decade": "1970s"
+      },
+      {
+        "Year": 1978,
+        "Temperature": -0.07,
+        "rainfall": 517.39,
+        "decade": "1970s"
+      },
+      {
+        "Year": 1979,
+        "Temperature": -0.22,
+        "rainfall": 451.81,
+        "decade": "1970s"
+      },
+      {
+        "Year": 1980,
+        "Temperature": 0.04,
+        "rainfall": 429.75,
+        "decade": "1980s"
+      },
+      {
+        "Year": 1981,
+        "Temperature": 0.16,
+        "rainfall": 527.34,
+        "decade": "1980s"
+      },
+      {
+        "Year": 1982,
+        "Temperature": -0.13,
+        "rainfall": 415.14,
+        "decade": "1980s"
+      },
+      {
+        "Year": 1983,
+        "Temperature": 0.37,
+        "rainfall": 492.99,
+        "decade": "1980s"
+      },
+      {
+        "Year": 1984,
+        "Temperature": 0.07,
+        "rainfall": 546.45,
+        "decade": "1980s"
+      },
+      {
+        "Year": 1985,
+        "Temperature": -0.14,
+        "rainfall": 397.53,
+        "decade": "1980s"
+      },
+      {
+        "Year": 1986,
+        "Temperature": -0.27,
+        "rainfall": 385.94,
+        "decade": "1980s"
+      },
+      {
+        "Year": 1987,
+        "Temperature": 0.19,
+        "rainfall": 450.08,
+        "decade": "1980s"
+      },
+      {
+        "Year": 1988,
+        "Temperature": 0.05,
+        "rainfall": 454.26,
+        "decade": "1980s"
+      },
+      {
+        "Year": 1989,
+        "Temperature": -0.02,
+        "rainfall": 480.3,
+        "decade": "1980s"
+      },
+      {
+        "Year": 1990,
+        "Temperature": 0.2,
+        "rainfall": 413.17,
+        "decade": "1990s"
+      },
+      {
+        "Year": 1991,
+        "Temperature": 0.19,
+        "rainfall": 460.81,
+        "decade": "1990s"
+      },
+      {
+        "Year": 1992,
+        "Temperature": -0.11,
+        "rainfall": 447.91,
+        "decade": "1990s"
+      },
+      {
+        "Year": 1993,
+        "Temperature": 0.17,
+        "rainfall": 487.96,
+        "decade": "1990s"
+      },
+      {
+        "Year": 1994,
+        "Temperature": 0.35,
+        "rainfall": 338.68,
+        "decade": "1990s"
+      },
+      {
+        "Year": 1995,
+        "Temperature": 0.31,
+        "rainfall": 518.15,
+        "decade": "1990s"
+      },
+      {
+        "Year": 1996,
+        "Temperature": 0.13,
+        "rainfall": 462.26,
+        "decade": "1990s"
+      },
+      {
+        "Year": 1997,
+        "Temperature": 0.43,
+        "rainfall": 514.17,
+        "decade": "1990s"
+      },
+      {
+        "Year": 1998,
+        "Temperature": 0.53,
+        "rainfall": 548.86,
+        "decade": "1990s"
+      },
+      {
+        "Year": 1999,
+        "Temperature": 0.23,
+        "rainfall": 578.77,
+        "decade": "1990s"
+      },
+      {
+        "Year": 2000,
+        "Temperature": 0.43,
+        "rainfall": 710.57,
+        "decade": "2000s"
+      },
+      {
+        "Year": 2001,
+        "Temperature": 0.42,
+        "rainfall": 542.8,
+        "decade": "2000s"
+      },
+      {
+        "Year": 2002,
+        "Temperature": 0.71,
+        "rainfall": 332.54,
+        "decade": "2000s"
+      },
+      {
+        "Year": 2003,
+        "Temperature": 0.62,
+        "rainfall": 469.91,
+        "decade": "2000s"
+      },
+      {
+        "Year": 2004,
+        "Temperature": 0.26,
+        "rainfall": 491.58,
+        "decade": "2000s"
+      },
+      {
+        "Year": 2005,
+        "Temperature": 0.47,
+        "rainfall": 394.3,
+        "decade": "2000s"
+      },
+      {
+        "Year": 2006,
+        "Temperature": 0.46,
+        "rainfall": 482.06,
+        "decade": "2000s"
+      },
+      {
+        "Year": 2007,
+        "Temperature": 0.4,
+        "rainfall": 495.65,
+        "decade": "2000s"
+      },
+      {
+        "Year": 2008,
+        "Temperature": 0.1,
+        "rainfall": 471.42,
+        "decade": "2000s"
+      },
+      {
+        "Year": 2009,
+        "Temperature": 0.56,
+        "rainfall": 452.69,
+        "decade": "2000s"
+      },
+      {
+        "Year": 2010,
+        "Temperature": 0.26,
+        "rainfall": 683.7,
+        "decade": "2010s"
+      },
+      {
+        "Year": 2011,
+        "Temperature": 0.12,
+        "rainfall": 696.7,
+        "decade": "2010s"
+      },
+      {
+        "Year": 2012,
+        "Temperature": 0.35,
+        "rainfall": 471.84,
+        "decade": "2010s"
+      },
+      {
+        "Year": 2013,
+        "Temperature": 0.99,
+        "rainfall": 422.61,
+        "decade": "2010s"
+      },
+      {
+        "Year": 2014,
+        "Temperature": 1.02,
+        "rainfall": 473.38,
+        "decade": "2010s"
+      },
+      {
+        "Year": 2015,
+        "Temperature": 0.83,
+        "rainfall": 436.74,
+        "decade": "2010s"
+      },
+      {
+        "Year": 2016,
+        "Temperature": 0.97,
+        "rainfall": 532.09,
+        "decade": "2010s"
+      },
+      {
+        "Year": 2017,
+        "Temperature": 0.86,
+        "rainfall": 494.44,
+        "decade": "2010s"
+      },
+      {
+        "Year": 2018,
+        "Temperature": 1.14,
+        "rainfall": 405.85,
+        "decade": "2010s"
+      },
+      {
+        "Year": 2019,
+        "Temperature": 1.52,
+        "rainfall": 275.71,
+        "decade": "2010s"
+      },
+      {
+        "Year": 2020,
+        "Temperature": 1.15,
+        "rainfall": 486.59,
+        "decade": "2020s"
+      }
+    ]
   },
   "layer": [
     {
-      "mark": {"type": "rule", "color": "#dddddd", "strokeWidth": 1, "strokeDash": [4,3]},
+      "mark": {
+        "type": "rule",
+        "color": "#dddddd",
+        "strokeWidth": 1,
+        "strokeDash": [
+          4,
+          3
+        ]
+      },
       "transform": [
-        {"aggregate": [{"op": "mean", "field": "rainfall", "as": "mean_rain"}]}
+        {
+          "aggregate": [
+            {
+              "op": "mean",
+              "field": "rainfall",
+              "as": "mean_rain"
+            }
+          ]
+        }
       ],
-      "encoding": {"y": {"field": "mean_rain", "type": "quantitative"}}
+      "encoding": {
+        "y": {
+          "field": "mean_rain",
+          "type": "quantitative"
+        }
+      }
     },
     {
-      "mark": {"type": "rule", "color": "#dddddd", "strokeWidth": 1, "strokeDash": [4,3]},
-      "encoding": {"x": {"datum": 0}}
+      "mark": {
+        "type": "rule",
+        "color": "#dddddd",
+        "strokeWidth": 1,
+        "strokeDash": [
+          4,
+          3
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": 0
+        }
+      }
     },
     {
       "mark": {
         "type": "point",
         "filled": true,
-        "size": 70,
+        "size": 65,
         "opacity": 0.75
       },
       "encoding": {
         "x": {
           "field": "Temperature",
           "type": "quantitative",
-          "axis": {"title": "Temperature anomaly (°C)", "labelFontSize": 11, "grid": false},
-          "scale": {"domain": [-1.3, 1.7]}
+          "axis": {
+            "title": "Temperature anomaly (\u00b0C)",
+            "labelFontSize": 11,
+            "grid": false
+          },
+          "scale": {
+            "domain": [
+              -1.3,
+              1.7
+            ]
+          }
         },
         "y": {
           "field": "rainfall",
           "type": "quantitative",
-          "axis": {"title": "Annual rainfall (mm)", "labelFontSize": 11, "grid": false},
-          "scale": {"domain": [250, 780]}
+          "axis": {
+            "title": "Annual rainfall (mm)",
+            "labelFontSize": 11,
+            "grid": false
+          },
+          "scale": {
+            "domain": [
+              250,
+              780
+            ]
+          }
         },
         "color": {
           "field": "decade",
           "type": "nominal",
           "scale": {
-            "domain": ["1910s","1920s","1930s","1940s","1950s","1960s","1970s","1980s","1990s","2000s","2010s"],
+            "domain": [
+              "1910s",
+              "1920s",
+              "1930s",
+              "1940s",
+              "1950s",
+              "1960s",
+              "1970s",
+              "1980s",
+              "1990s",
+              "2000s",
+              "2010s"
+            ],
             "scheme": "tableau10"
           },
-          "legend": {"title": "Decade", "orient": "right", "labelFontSize": 11}
+          "legend": {
+            "title": "Decade",
+            "orient": "right",
+            "labelFontSize": 11
+          }
         },
         "tooltip": [
-          {"field": "Year", "type": "quantitative", "title": "Year", "format": "d"},
-          {"field": "Temperature", "type": "quantitative", "title": "Temp anomaly (°C)", "format": "+.2f"},
-          {"field": "rainfall", "type": "quantitative", "title": "Rainfall (mm)", "format": ".0f"},
-          {"field": "decade", "type": "nominal", "title": "Decade"}
+          {
+            "field": "Year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "Temperature",
+            "type": "quantitative",
+            "title": "Temp anomaly (\u00b0C)",
+            "format": "+.2f"
+          },
+          {
+            "field": "rainfall",
+            "type": "quantitative",
+            "title": "Rainfall (mm)",
+            "format": ".0f"
+          },
+          {
+            "field": "decade",
+            "type": "nominal",
+            "title": "Decade"
+          }
         ]
       }
     },
@@ -70,10 +822,24 @@
           "on": "Temperature"
         }
       ],
-      "mark": {"type": "line", "color": "#c0392b", "strokeWidth": 2, "strokeDash": [6,3]},
+      "mark": {
+        "type": "line",
+        "color": "#c0392b",
+        "strokeWidth": 2,
+        "strokeDash": [
+          6,
+          3
+        ]
+      },
       "encoding": {
-        "x": {"field": "Temperature", "type": "quantitative"},
-        "y": {"field": "rainfall", "type": "quantitative"}
+        "x": {
+          "field": "Temperature",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "rainfall",
+          "type": "quantitative"
+        }
       }
     }
   ]

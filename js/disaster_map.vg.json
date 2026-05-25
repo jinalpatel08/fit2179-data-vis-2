@@ -1,22 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 620,
-  "height": 440,
+  "width": 580,
+  "height": 420,
   "title": {
     "text": "Where Do Extreme Events Strike Most?",
-    "subtitle": "Circle size and colour show total recorded extreme weather events per state, 2000–2025. Source: EM-DAT.",
-    "fontSize": 15,
-    "subtitleFontSize": 12,
-    "subtitleColor": "#888",
-    "anchor": "start",
-    "font": "Inter"
+    "subtitle": "Circle size shows total recorded extreme weather events per state, 2000–2025. Source: EM-DAT.",
+    "fontSize": 15, "subtitleFontSize": 12, "subtitleColor": "#888", "anchor": "start"
   },
-  "projection": {
-    "type": "mercator",
-    "center": [133, -27],
-    "scale": 700,
-    "translate": [310, 220]
-  },
+  "projection": {"type": "equirectangular", "center": [133, -28], "scale": 800, "translate": [290, 210]},
   "layer": [
     {
       "data": {
@@ -29,19 +20,17 @@
       "data": {
         "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/disaster_map.csv"
       },
-      "mark": {"type": "circle", "opacity": 0.8, "stroke": "#ffffff", "strokeWidth": 1.5},
+      "mark": {"type": "circle", "opacity": 0.8, "stroke": "#c0392b", "strokeWidth": 1.5},
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
         "latitude": {"field": "latitude", "type": "quantitative"},
         "size": {
-          "field": "total_events",
-          "type": "quantitative",
-          "scale": {"range": [300, 5000]},
-          "legend": {"title": "Total events", "orient": "bottom-right", "labelFontSize": 11}
+          "field": "total_events", "type": "quantitative",
+          "scale": {"range": [200, 5000]},
+          "legend": {"title": "Total events", "orient": "bottom-right"}
         },
         "color": {
-          "field": "total_events",
-          "type": "quantitative",
+          "field": "total_events", "type": "quantitative",
           "scale": {"scheme": "orangered", "domain": [0, 70]},
           "legend": null
         },
@@ -55,7 +44,7 @@
       "data": {
         "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/disaster_map.csv"
       },
-      "mark": {"type": "text", "fontSize": 10, "fontWeight": "bold", "color": "#1a1a2e", "dy": -22},
+      "mark": {"type": "text", "fontSize": 10, "fontWeight": "bold", "color": "#1a1a2e", "dy": -20},
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
         "latitude": {"field": "latitude", "type": "quantitative"},

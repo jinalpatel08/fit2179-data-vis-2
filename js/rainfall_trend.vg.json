@@ -1,46 +1,674 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 560,
-  "height": 300,
+  "width": 540,
+  "height": 280,
   "title": {
     "text": "The Long-Term Rainfall Trend is Declining",
-    "subtitle": "10-year rolling average smooths year-to-year variability to reveal the underlying trend. Source: Bureau of Meteorology.",
+    "subtitle": "10-year rolling average reveals the underlying downward trend. Source: Bureau of Meteorology.",
     "fontSize": 15,
     "subtitleFontSize": 12,
     "subtitleColor": "#888",
-    "anchor": "start",
-    "font": "Inter"
+    "anchor": "start"
   },
   "data": {
-    "url": "https://raw.githubusercontent.com/jinalpatel08/fit2179-data-vis-2/main/data/rainfall_rolling.csv"
+    "values": [
+      {
+        "year": 1905,
+        "rainfall": 332.52,
+        "rolling_avg": 431.164
+      },
+      {
+        "year": 1906,
+        "rainfall": 490.93,
+        "rolling_avg": 447.12
+      },
+      {
+        "year": 1907,
+        "rainfall": 460.59,
+        "rolling_avg": 450.321
+      },
+      {
+        "year": 1908,
+        "rainfall": 458.03,
+        "rolling_avg": 456.849
+      },
+      {
+        "year": 1909,
+        "rainfall": 443.02,
+        "rolling_avg": 449.31299999999993
+      },
+      {
+        "year": 1910,
+        "rainfall": 535.56,
+        "rolling_avg": 441.232
+      },
+      {
+        "year": 1911,
+        "rainfall": 436.93,
+        "rolling_avg": 446.16399999999993
+      },
+      {
+        "year": 1912,
+        "rainfall": 384.8,
+        "rolling_avg": 450.13
+      },
+      {
+        "year": 1913,
+        "rainfall": 444.92,
+        "rolling_avg": 461.872
+      },
+      {
+        "year": 1914,
+        "rainfall": 425.02,
+        "rolling_avg": 459.153
+      },
+      {
+        "year": 1915,
+        "rainfall": 381.84,
+        "rolling_avg": 451.453
+      },
+      {
+        "year": 1916,
+        "rainfall": 530.59,
+        "rolling_avg": 449.353
+      },
+      {
+        "year": 1917,
+        "rainfall": 578.01,
+        "rolling_avg": 460.703
+      },
+      {
+        "year": 1918,
+        "rainfall": 430.84,
+        "rolling_avg": 463.844
+      },
+      {
+        "year": 1919,
+        "rainfall": 366.02,
+        "rolling_avg": 460.485
+      },
+      {
+        "year": 1920,
+        "rainfall": 514.56,
+        "rolling_avg": 458.91100000000006
+      },
+      {
+        "year": 1921,
+        "rainfall": 550.43,
+        "rolling_avg": 462.864
+      },
+      {
+        "year": 1922,
+        "rainfall": 416.21,
+        "rolling_avg": 451.176
+      },
+      {
+        "year": 1923,
+        "rainfall": 411.33,
+        "rolling_avg": 435.148
+      },
+      {
+        "year": 1924,
+        "rainfall": 409.28,
+        "rolling_avg": 428.103
+      },
+      {
+        "year": 1925,
+        "rainfall": 421.37,
+        "rolling_avg": 429.34800000000007
+      },
+      {
+        "year": 1926,
+        "rainfall": 413.71,
+        "rolling_avg": 426.986
+      },
+      {
+        "year": 1927,
+        "rainfall": 417.73,
+        "rolling_avg": 415.535
+      },
+      {
+        "year": 1928,
+        "rainfall": 360.39,
+        "rolling_avg": 412.528
+      },
+      {
+        "year": 1929,
+        "rainfall": 378.47,
+        "rolling_avg": 415.846
+      },
+      {
+        "year": 1930,
+        "rainfall": 490.94,
+        "rolling_avg": 418.776
+      },
+      {
+        "year": 1931,
+        "rainfall": 435.92,
+        "rolling_avg": 411.609
+      },
+      {
+        "year": 1932,
+        "rainfall": 386.14,
+        "rolling_avg": 410.686
+      },
+      {
+        "year": 1933,
+        "rainfall": 444.51,
+        "rolling_avg": 407.494
+      },
+      {
+        "year": 1934,
+        "rainfall": 438.58,
+        "rolling_avg": 407.825
+      },
+      {
+        "year": 1935,
+        "rainfall": 349.7,
+        "rolling_avg": 419.217
+      },
+      {
+        "year": 1936,
+        "rainfall": 404.48,
+        "rolling_avg": 409.665
+      },
+      {
+        "year": 1937,
+        "rainfall": 385.81,
+        "rolling_avg": 414.112
+      },
+      {
+        "year": 1938,
+        "rainfall": 363.7,
+        "rolling_avg": 428.578
+      },
+      {
+        "year": 1939,
+        "rainfall": 492.39,
+        "rolling_avg": 423.0799999999999
+      },
+      {
+        "year": 1940,
+        "rainfall": 395.42,
+        "rolling_avg": 417.278
+      },
+      {
+        "year": 1941,
+        "rainfall": 480.39,
+        "rolling_avg": 423.305
+      },
+      {
+        "year": 1942,
+        "rainfall": 530.8,
+        "rolling_avg": 423.568
+      },
+      {
+        "year": 1943,
+        "rainfall": 389.53,
+        "rolling_avg": 435.001
+      },
+      {
+        "year": 1944,
+        "rainfall": 380.56,
+        "rolling_avg": 437.179
+      },
+      {
+        "year": 1945,
+        "rainfall": 409.97,
+        "rolling_avg": 435.6350000000001
+      },
+      {
+        "year": 1946,
+        "rainfall": 407.11,
+        "rolling_avg": 458.842
+      },
+      {
+        "year": 1947,
+        "rainfall": 500.14,
+        "rolling_avg": 447.73
+      },
+      {
+        "year": 1948,
+        "rainfall": 385.48,
+        "rolling_avg": 433.051
+      },
+      {
+        "year": 1949,
+        "rainfall": 476.95,
+        "rolling_avg": 436.711
+      },
+      {
+        "year": 1950,
+        "rainfall": 627.49,
+        "rolling_avg": 444.71
+      },
+      {
+        "year": 1951,
+        "rainfall": 369.27,
+        "rolling_avg": 461.031
+      },
+      {
+        "year": 1952,
+        "rainfall": 384.01,
+        "rolling_avg": 480.45
+      },
+      {
+        "year": 1953,
+        "rainfall": 426.13,
+        "rolling_avg": 469.304
+      },
+      {
+        "year": 1954,
+        "rainfall": 460.55,
+        "rolling_avg": 472.612
+      },
+      {
+        "year": 1955,
+        "rainfall": 573.18,
+        "rolling_avg": 466.354
+      },
+      {
+        "year": 1956,
+        "rainfall": 601.3,
+        "rolling_avg": 449.445
+      },
+      {
+        "year": 1957,
+        "rainfall": 388.68,
+        "rolling_avg": 446.132
+      },
+      {
+        "year": 1958,
+        "rainfall": 418.56,
+        "rolling_avg": 451.37299999999993
+      },
+      {
+        "year": 1959,
+        "rainfall": 414.37,
+        "rolling_avg": 456.3179999999999
+      },
+      {
+        "year": 1960,
+        "rainfall": 458.4,
+        "rolling_avg": 452.862
+      },
+      {
+        "year": 1961,
+        "rainfall": 336.14,
+        "rolling_avg": 430.116
+      },
+      {
+        "year": 1962,
+        "rainfall": 436.42,
+        "rolling_avg": 409.742
+      },
+      {
+        "year": 1963,
+        "rainfall": 475.58,
+        "rolling_avg": 413.762
+      },
+      {
+        "year": 1964,
+        "rainfall": 425.99,
+        "rolling_avg": 426.36
+      },
+      {
+        "year": 1965,
+        "rainfall": 345.72,
+        "rolling_avg": 426.003
+      },
+      {
+        "year": 1966,
+        "rainfall": 397.56,
+        "rolling_avg": 418.204
+      },
+      {
+        "year": 1967,
+        "rainfall": 428.88,
+        "rolling_avg": 433.223
+      },
+      {
+        "year": 1968,
+        "rainfall": 544.54,
+        "rolling_avg": 425.807
+      },
+      {
+        "year": 1969,
+        "rainfall": 410.8,
+        "rolling_avg": 442.36
+      },
+      {
+        "year": 1970,
+        "rainfall": 380.41,
+        "rolling_avg": 475.818
+      },
+      {
+        "year": 1971,
+        "rainfall": 486.33,
+        "rolling_avg": 500.624
+      },
+      {
+        "year": 1972,
+        "rainfall": 362.26,
+        "rolling_avg": 513.163
+      },
+      {
+        "year": 1973,
+        "rainfall": 641.11,
+        "rolling_avg": 517.2610000000001
+      },
+      {
+        "year": 1974,
+        "rainfall": 760.57,
+        "rolling_avg": 514.546
+      },
+      {
+        "year": 1975,
+        "rainfall": 593.78,
+        "rolling_avg": 518.647
+      },
+      {
+        "year": 1976,
+        "rainfall": 522.95,
+        "rolling_avg": 523.581
+      },
+      {
+        "year": 1977,
+        "rainfall": 469.86,
+        "rolling_avg": 527.682
+      },
+      {
+        "year": 1978,
+        "rainfall": 517.39,
+        "rolling_avg": 532.97
+      },
+      {
+        "year": 1979,
+        "rainfall": 451.81,
+        "rolling_avg": 518.1580000000001
+      },
+      {
+        "year": 1980,
+        "rainfall": 429.75,
+        "rolling_avg": 496.746
+      },
+      {
+        "year": 1981,
+        "rainfall": 527.34,
+        "rolling_avg": 477.121
+      },
+      {
+        "year": 1982,
+        "rainfall": 415.14,
+        "rolling_avg": 463.4200000000001
+      },
+      {
+        "year": 1983,
+        "rainfall": 492.99,
+        "rolling_avg": 461.442
+      },
+      {
+        "year": 1984,
+        "rainfall": 546.45,
+        "rolling_avg": 455.129
+      },
+      {
+        "year": 1985,
+        "rainfall": 397.53,
+        "rolling_avg": 457.978
+      },
+      {
+        "year": 1986,
+        "rainfall": 385.94,
+        "rolling_avg": 456.32
+      },
+      {
+        "year": 1987,
+        "rainfall": 450.08,
+        "rolling_avg": 449.667
+      },
+      {
+        "year": 1988,
+        "rainfall": 454.26,
+        "rolling_avg": 452.944
+      },
+      {
+        "year": 1989,
+        "rainfall": 480.3,
+        "rolling_avg": 452.441
+      },
+      {
+        "year": 1990,
+        "rainfall": 413.17,
+        "rolling_avg": 431.66399999999993
+      },
+      {
+        "year": 1991,
+        "rainfall": 460.81,
+        "rolling_avg": 443.726
+      },
+      {
+        "year": 1992,
+        "rainfall": 447.91,
+        "rolling_avg": 451.358
+      },
+      {
+        "year": 1993,
+        "rainfall": 487.96,
+        "rolling_avg": 457.767
+      },
+      {
+        "year": 1994,
+        "rainfall": 338.68,
+        "rolling_avg": 467.227
+      },
+      {
+        "year": 1995,
+        "rainfall": 518.15,
+        "rolling_avg": 477.074
+      },
+      {
+        "year": 1996,
+        "rainfall": 462.26,
+        "rolling_avg": 506.814
+      },
+      {
+        "year": 1997,
+        "rainfall": 514.17,
+        "rolling_avg": 515.013
+      },
+      {
+        "year": 1998,
+        "rainfall": 548.86,
+        "rolling_avg": 503.476
+      },
+      {
+        "year": 1999,
+        "rainfall": 578.77,
+        "rolling_avg": 501.671
+      },
+      {
+        "year": 2000,
+        "rainfall": 710.57,
+        "rolling_avg": 516.961
+      },
+      {
+        "year": 2001,
+        "rainfall": 542.8,
+        "rolling_avg": 504.576
+      },
+      {
+        "year": 2002,
+        "rainfall": 332.54,
+        "rolling_avg": 506.556
+      },
+      {
+        "year": 2003,
+        "rainfall": 469.91,
+        "rolling_avg": 504.704
+      },
+      {
+        "year": 2004,
+        "rainfall": 491.58,
+        "rolling_avg": 496.96
+      },
+      {
+        "year": 2005,
+        "rainfall": 394.3,
+        "rolling_avg": 484.352
+      },
+      {
+        "year": 2006,
+        "rainfall": 482.06,
+        "rolling_avg": 481.6650000000001
+      },
+      {
+        "year": 2007,
+        "rainfall": 495.65,
+        "rolling_avg": 497.055
+      },
+      {
+        "year": 2008,
+        "rainfall": 471.42,
+        "rolling_avg": 510.985
+      },
+      {
+        "year": 2009,
+        "rainfall": 452.69,
+        "rolling_avg": 506.255
+      },
+      {
+        "year": 2010,
+        "rainfall": 683.7,
+        "rolling_avg": 504.43500000000006
+      },
+      {
+        "year": 2011,
+        "rainfall": 696.7,
+        "rolling_avg": 508.679
+      },
+      {
+        "year": 2012,
+        "rainfall": 471.84,
+        "rolling_avg": 513.682
+      },
+      {
+        "year": 2013,
+        "rainfall": 422.61,
+        "rolling_avg": 513.561
+      },
+      {
+        "year": 2014,
+        "rainfall": 473.38,
+        "rolling_avg": 507.004
+      },
+      {
+        "year": 2015,
+        "rainfall": 436.74,
+        "rolling_avg": 489.306
+      },
+      {
+        "year": 2016,
+        "rainfall": 532.09,
+        "rolling_avg": 469.595
+      },
+      {
+        "year": 2017,
+        "rainfall": 494.44,
+        "rolling_avg": 450.699
+      },
+      {
+        "year": 2018,
+        "rainfall": 405.85,
+        "rolling_avg": 462.44
+      },
+      {
+        "year": 2019,
+        "rainfall": 275.71,
+        "rolling_avg": 467.4860000000001
+      },
+      {
+        "year": 2020,
+        "rainfall": 486.59,
+        "rolling_avg": 480.304
+      },
+      {
+        "year": 2021,
+        "rainfall": 507.74,
+        "rolling_avg": 487.082
+      }
+    ]
   },
   "layer": [
     {
-      "mark": {"type": "bar", "color": "#d6eaf8", "opacity": 0.6},
+      "mark": {
+        "type": "bar",
+        "color": "#d6eaf8",
+        "opacity": 0.6
+      },
       "encoding": {
         "x": {
           "field": "year",
           "type": "quantitative",
-          "axis": {"title": null, "format": "d", "tickCount": 13, "labelFontSize": 11}
+          "axis": {
+            "title": null,
+            "format": "d",
+            "tickCount": 13,
+            "labelFontSize": 11
+          }
         },
         "y": {
           "field": "rainfall",
           "type": "quantitative",
-          "axis": {"title": "Rainfall (mm)", "grid": false, "labelFontSize": 11},
-          "scale": {"domain": [200, 800]}
+          "axis": {
+            "title": "Rainfall (mm)",
+            "grid": false,
+            "labelFontSize": 11
+          },
+          "scale": {
+            "domain": [
+              200,
+              800
+            ]
+          }
         }
       }
     },
     {
-      "transform": [{"filter": "datum.rolling_avg !== null && datum.rolling_avg > 0"}],
-      "mark": {"type": "line", "color": "#2471a3", "strokeWidth": 3, "interpolate": "monotone"},
+      "mark": {
+        "type": "line",
+        "color": "#2471a3",
+        "strokeWidth": 3,
+        "interpolate": "monotone"
+      },
       "encoding": {
-        "x": {"field": "year", "type": "quantitative"},
-        "y": {"field": "rolling_avg", "type": "quantitative"},
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "rolling_avg",
+          "type": "quantitative"
+        },
         "tooltip": [
-          {"field": "year", "type": "quantitative", "title": "Year", "format": "d"},
-          {"field": "rolling_avg", "type": "quantitative", "title": "10-yr avg (mm)", "format": ".0f"},
-          {"field": "rainfall", "type": "quantitative", "title": "Annual (mm)", "format": ".0f"}
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "rolling_avg",
+            "type": "quantitative",
+            "title": "10-yr avg (mm)",
+            "format": ".0f"
+          },
+          {
+            "field": "rainfall",
+            "type": "quantitative",
+            "title": "Annual (mm)",
+            "format": ".0f"
+          }
         ]
       }
     }
